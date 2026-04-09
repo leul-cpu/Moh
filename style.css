@@ -1047,3 +1047,11 @@ footer {
     .footer-top { flex-direction: column; gap: 1.5rem; }
     .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
 }
+.client-school {
+    background-color: #e6f0ff;
+    color: #1a73e8;
+}
+
+.client-school i {
+    font-size: 28px;
+}

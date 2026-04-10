@@ -1132,3 +1132,27 @@ footer {
         }
     }
 </style>
+/* 1. Force the video player to be the primary interactive layer */
+.main-video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+    position: relative;
+    z-index: 10 !important; 
+    pointer-events: auto !important;
+}
+
+/* 2. Make the text labels 'transparent' to mouse clicks */
+.clickable-content {
+    pointer-events: none !important;
+    position: relative;
+    z-index: 5; 
+}
+
+/* 3. Ensure the video keeps its shape in Full Screen mode */
+video:fullscreen, 
+video:-webkit-full-screen {
+    object-fit: contain !important;
+    background-color: #000 !important;
+}

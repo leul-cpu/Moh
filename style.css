@@ -1,3 +1,5 @@
+@import url("https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css");
+@import url("https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css");
 /* CSS Custom Properties for Theming */
 :root {
     --bg-dark: #0f172a;
@@ -1047,10 +1049,7 @@ footer {
     .footer-top { flex-direction: column; gap: 1.5rem; }
     .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
 }
-<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/regular/style.css">
-<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css">
 
-<style>
     .clients-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1131,7 +1130,7 @@ footer {
             grid-template-columns: 1fr;
         }
     }
-</style>
+
 /* 1. Force the video player to be the primary interactive layer */
 .main-video {
     width: 100%;

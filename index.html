@@ -577,7 +577,32 @@
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+    const videos = document.querySelectorAll('.main-video');
+
+    videos.forEach(video => {
+        video.addEventListener('fullscreenchange', () => {
+            if (document.fullscreenElement) {
+                // Check if video is landscape
+                if (video.videoWidth > video.videoHeight) {
+                    if (screen.orientation && screen.orientation.lock) {
+                        screen.orientation.lock('landscape').catch(() => {});
+                    }
+                } else {
+                    // It's a portrait video
+                    if (screen.orientation && screen.orientation.lock) {
+                        screen.orientation.lock('portrait').catch(() => {});
+                    }
+                }
+            } else {
+                // Unlock when leaving fullscreen
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                }
+            }
+        });
+    });
+</script>
 </body>
 
 </html>

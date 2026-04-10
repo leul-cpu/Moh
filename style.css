@@ -1129,6 +1129,7 @@ footer {
         .clients-grid {
             grid-template-columns: 1fr;
         }
+    }
 /* 1. Force the video player to be the primary interactive layer */
 .main-video {
     width: 100%;

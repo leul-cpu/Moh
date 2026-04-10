@@ -1048,10 +1048,15 @@ footer {
     .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
 }
 .client-school {
-    background-color: #e6f0ff;
-    color: #1a73e8;
+    background-color: #eef3ff;
+    padding: 12px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .client-school i {
-    font-size: 28px;
+    font-size: 26px;
+    color: #1a73e8;
 }

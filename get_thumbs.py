@@ -16,7 +16,10 @@ urls = [
     "https://vt.tiktok.com/ZSmYqBkUd/",
     "https://vt.tiktok.com/ZSmYVopMf/",
     "https://vt.tiktok.com/ZSmYq8Fhv/",
-    "https://vt.tiktok.com/ZSmYqBh9S/"
+    "https://vt.tiktok.com/ZSmYqBh9S/",
+    "https://vt.tiktok.com/ZSHKj6q91/",
+    "https://vt.tiktok.com/ZSHKjD3KA/",
+    "https://vt.tiktok.com/ZSHKjf5Wv/"
 ]
 
 results = {}

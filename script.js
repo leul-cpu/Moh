@@ -89,21 +89,25 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollObserver.observe(el);
     });
 
-    // Dynamic thumbnails loading from thumbnails.json
-    fetch('thumbnails.json')
-        .then(res => res.json())
-        .then(data => {
-            document.querySelectorAll('.portfolio-card').forEach(card => {
-                const link = card.querySelector('a');
-                if (link && data[link.href]) {
-                    const bg = card.querySelector('.card-bg');
-                    if (bg && !bg.classList.contains('video-bg')) {
-                        bg.style.backgroundImage = `linear-gradient(to top, rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.2)), url('${data[link.href]}')`;
-                        bg.style.backgroundSize = 'cover';
-                        bg.style.backgroundPosition = 'center';
-                    }
-                }
-            });
-        })
-        .catch(err => console.error('Error loading thumbnails:', err));
+    // Dynamic thumbnails loading from TikTok oEmbed API via CORS proxy
+    document.querySelectorAll('.portfolio-card').forEach(card => {
+        const link = card.querySelector('a');
+        if (link && link.href.includes('tiktok.com')) {
+            const bg = card.querySelector('.card-bg');
+            if (bg && !bg.classList.contains('video-bg')) {
+                // Fetch thumbnail dynamically
+                const proxyUrl = `https://api.codetabs.com/v1/proxy?quest=${encodeURIComponent('https://www.tiktok.com/oembed?url=' + link.href)}`;
+                fetch(proxyUrl)
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data && data.thumbnail_url) {
+                            bg.style.backgroundImage = `linear-gradient(to top, rgba(15, 23, 42, 0.5), rgba(15, 23, 42, 0.2)), url('${data.thumbnail_url}')`;
+                            bg.style.backgroundSize = 'cover';
+                            bg.style.backgroundPosition = 'center';
+                        }
+                    })
+                    .catch(err => console.error('Error fetching TikTok thumbnail:', err));
+            }
+        }
+    });
 });

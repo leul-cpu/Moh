@@ -2,6 +2,7 @@ import urllib.request
 import json
 import ssl
 import os
+import time
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -29,6 +30,14 @@ results = {}
 os.makedirs("assets/thumbnails", exist_ok=True)
 
 for i, u in enumerate(urls):
+    local_filename = f"assets/thumbnails/thumb_{i+1}.jpg"
+    
+    # Check if we already downloaded this thumbnail successfully in a previous run
+    if os.path.exists(local_filename) and os.path.getsize(local_filename) > 1000:
+        print(f"Skipping {u} (Already downloaded as {local_filename})")
+        results[u] = local_filename
+        continue
+
     try:
         print(f"Processing {u} ...")
         # Get real URL
@@ -45,7 +54,6 @@ for i, u in enumerate(urls):
         
         if thumb_url:
             # Download the image
-            local_filename = f"assets/thumbnails/thumb_{i+1}.jpg"
             print(f"  -> Downloading image to {local_filename}")
             
             img_req = urllib.request.Request(thumb_url, headers={'User-Agent': 'Mozilla/5.0'})
@@ -61,6 +69,9 @@ for i, u in enumerate(urls):
     except Exception as e:
         print(f"  -> Error: {e}")
         results[u] = str(e)
+    
+    # Wait 5 seconds to be extra safe with TikTok's rate limiter
+    time.sleep(5)
 
 # Save the updated JSON mapping
 with open('thumbnails.json', 'w') as f:

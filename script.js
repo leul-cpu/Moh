@@ -89,6 +89,34 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollObserver.observe(el);
     });
 
+    // --- Private Videos Logic ---
+    const privateVideos = document.querySelectorAll('.main-video');
+    
+    // 1. Pause other videos when one is played
+    privateVideos.forEach(video => {
+        video.addEventListener('play', () => {
+            privateVideos.forEach(otherVideo => {
+                if (otherVideo !== video && !otherVideo.paused) {
+                    otherVideo.pause();
+                }
+            });
+        });
+    });
+
+    // 2. Pause video if it scrolls out of view
+    const videoObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting && !entry.target.paused) {
+                entry.target.pause();
+            }
+        });
+    }, { threshold: 0.1 });
+
+    privateVideos.forEach(video => {
+        videoObserver.observe(video);
+    });
+
+
     // Load thumbnails from pre-fetched thumbnails.json
     // (TikTok's oEmbed API does not resolve vt.tiktok.com short links at runtime)
     fetch('thumbnails.json')

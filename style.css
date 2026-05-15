@@ -730,6 +730,17 @@ section {
     transform: translateY(0);
 }
 
+.card-content.top-content {
+    bottom: auto;
+    top: 0;
+    background: linear-gradient(to bottom, rgba(2, 6, 23, 1) 0%, rgba(2, 6, 23, 0.8) 50%, transparent 100%);
+    transform: translateY(-15px);
+}
+
+.portfolio-card:hover .card-content.top-content {
+    transform: translateY(0);
+}
+
 .card-content h4 {
     font-size: 1.25rem;
     margin-bottom: 0.25rem;

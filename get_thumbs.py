@@ -1,6 +1,7 @@
 import urllib.request
 import json
 import ssl
+import os
 
 ssl._create_default_https_context = ssl._create_unverified_context
 
@@ -24,19 +25,45 @@ urls = [
 
 results = {}
 
-for u in urls:
+# Ensure the assets folder exists
+os.makedirs("assets/thumbnails", exist_ok=True)
+
+for i, u in enumerate(urls):
     try:
+        print(f"Processing {u} ...")
+        # Get real URL
         req = urllib.request.Request(u, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'})
         res = urllib.request.urlopen(req, timeout=10)
         real_url = res.url.split('?')[0] # remove query params
         
+        # Get oEmbed JSON
         oembed_url = "https://www.tiktok.com/oembed?url=" + real_url
         req2 = urllib.request.Request(oembed_url, headers={'User-Agent': 'Mozilla/5.0'})
         res2 = urllib.request.urlopen(req2, timeout=10)
         data = json.loads(res2.read().decode())
-        results[u] = data.get('thumbnail_url', '')
+        thumb_url = data.get('thumbnail_url', '')
+        
+        if thumb_url:
+            # Download the image
+            local_filename = f"assets/thumbnails/thumb_{i+1}.jpg"
+            print(f"  -> Downloading image to {local_filename}")
+            
+            img_req = urllib.request.Request(thumb_url, headers={'User-Agent': 'Mozilla/5.0'})
+            with urllib.request.urlopen(img_req, timeout=10) as response, open(local_filename, 'wb') as out_file:
+                out_file.write(response.read())
+            
+            # Map the TikTok URL to the local file path
+            results[u] = local_filename
+        else:
+            print("  -> No thumbnail found.")
+            results[u] = ""
+            
     except Exception as e:
+        print(f"  -> Error: {e}")
         results[u] = str(e)
 
+# Save the updated JSON mapping
 with open('thumbnails.json', 'w') as f:
     json.dump(results, f, indent=2)
+
+print("\nDone! thumbnails.json has been updated with local file paths.")

@@ -29,8 +29,9 @@ results = {}
 # Ensure the assets folder exists
 os.makedirs("assets/thumbnails", exist_ok=True)
 
-for i, u in enumerate(urls):
-    local_filename = f"assets/thumbnails/thumb_{i+1}.jpg"
+for u in urls:
+    video_id = u.strip('/').split('/')[-1]
+    local_filename = f"assets/thumbnails/thumb_{video_id}.jpg"
     
     # Check if we already downloaded this thumbnail successfully in a previous run
     if os.path.exists(local_filename) and os.path.getsize(local_filename) > 1000:

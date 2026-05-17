@@ -361,6 +361,9 @@ section {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
     font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .hero-role .divider {
@@ -850,6 +853,97 @@ section {
     color: var(--primary);
     transform: translateY(-3px) scale(1.1) !important;
 }
+/* ==========================================================================
+   The Vault (Private Videos) Section
+   ========================================================================== */
+.vault-section {
+    padding: 6rem 0;
+    position: relative;
+    background: radial-gradient(circle at center, rgba(15, 23, 42, 1) 0%, rgba(2, 6, 23, 1) 100%);
+}
+
+.vault-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.vault-card {
+    background: rgba(15, 23, 42, 0.4);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(220, 38, 38, 0.2); /* Subtle crimson border */
+    overflow: hidden;
+    position: relative;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+.vault-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(220, 38, 38, 0.5);
+    box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15), 0 0 20px rgba(220, 38, 38, 0.1);
+}
+
+.vault-badge {
+    position: absolute;
+    top: 1.2rem;
+    left: 1.2rem;
+    z-index: 10;
+    background: rgba(220, 38, 38, 0.9); /* Crimson badge */
+    color: #fff;
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.4);
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.vault-video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    background: #000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.vault-video-wrapper .main-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vault-content {
+    padding: 1.8rem;
+}
+
+.vault-content h4 {
+    font-size: 1.3rem;
+    margin-bottom: 0.4rem;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.vault-content p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 0;
+    opacity: 0.8;
+}
 
 /* Brands & Tools */
 .brands-tools-wrapper {
@@ -1159,6 +1253,49 @@ footer {
     .card-bg { height: 200px; }
     .footer-top { flex-direction: column; gap: 1.5rem; }
     .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
+
+    /* Modern Grid Responsive Fixes */
+    .modern-portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+    .portfolio-card.featured-card {
+        grid-column: span 1;
+    }
+    .portfolio-filters {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .filter-btn {
+        padding: 0.4rem 1rem;
+        font-size: 0.85rem;
+    }
+    .card-content h4 { font-size: 1.1rem; }
+
+    /* The Vault Responsive Fixes */
+    .vault-section { padding: 4rem 0; }
+    .vault-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .vault-content { padding: 1.2rem; }
+    .vault-content h4 { font-size: 1.1rem; }
+    .vault-badge { font-size: 0.65rem; padding: 0.3rem 0.6rem; top: 0.8rem; left: 0.8rem; }
+}
+
+/* Extra small screens (iPhones) */
+@media (max-width: 480px) {
+    .hero-title { font-size: 2rem; }
+    .hero-role { font-size: 1rem; justify-content: center; line-height: 1.6; }
+    .hero-role .divider { display: none; }
+    .hero-role .gradient-text { display: block; width: 100%; margin-bottom: 0.2rem; }
+    .hero-description { font-size: 1rem; }
+    .hero-actions { flex-direction: column; width: 100%; gap: 1rem; }
+    .hero-actions .btn { width: 100%; justify-content: center; }
+    
+    /* Stop the visual card from breaking the screen width */
+    .visual-card { width: 100%; height: auto; padding: 3rem 1rem; }
+    .hero-img-container, .hero-img { width: 200px; height: 200px; }
 }
 
 

@@ -10,18 +10,18 @@ urls = [
     "https://vt.tiktok.com/ZSmYVKx3j/",
     "https://vt.tiktok.com/ZSmYqJ3sB/",
     "https://vt.tiktok.com/ZSmYVP952/",
-    "https://vt.tiktok.com/ZSmYVarXw/",
     "https://vt.tiktok.com/ZSmYVG9yv/",
     "https://vt.tiktok.com/ZSmYVbfnR/",
     "https://vt.tiktok.com/ZSmYV9oPs/",
     "https://vt.tiktok.com/ZSmYqyRFw/",
     "https://vt.tiktok.com/ZSmYqBkUd/",
-    "https://vt.tiktok.com/ZSmYVopMf/",
     "https://vt.tiktok.com/ZSmYq8Fhv/",
     "https://vt.tiktok.com/ZSmYqBh9S/",
     "https://vt.tiktok.com/ZSHKj6q91/",
     "https://vt.tiktok.com/ZSHKjD3KA/",
-    "https://vt.tiktok.com/ZSHKjf5Wv/"
+    "https://vt.tiktok.com/ZSHKjf5Wv/",
+    "https://vt.tiktok.com/ZSx2BBGY1/",
+    "https://vt.tiktok.com/ZSx2B2XWW/"
 ]
 
 results = {}
@@ -73,8 +73,10 @@ for i, u in enumerate(urls):
     # Wait 5 seconds to be extra safe with TikTok's rate limiter
     time.sleep(5)
 
-# Save the updated JSON mapping
-with open('thumbnails.json', 'w') as f:
+# Save the updated JSON mapping to a JS file to bypass CORS issues on local filesystem
+with open('thumbnailsData.js', 'w') as f:
+    f.write('const thumbnailsData = ')
     json.dump(results, f, indent=2)
+    f.write(';\n')
 
-print("\nDone! thumbnails.json has been updated with local file paths.")
+print("\nDone! thumbnailsData.js has been updated with local file paths.")

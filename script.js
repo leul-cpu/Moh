@@ -116,26 +116,58 @@ document.addEventListener('DOMContentLoaded', () => {
         videoObserver.observe(video);
     });
 
+    // --- Portfolio Filtering Logic ---
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const portfolioCards = document.querySelectorAll('.portfolio-card');
 
-    // Load thumbnails from pre-fetched thumbnails.json
-    // (TikTok's oEmbed API does not resolve vt.tiktok.com short links at runtime)
-    fetch('thumbnails.json')
-        .then(res => res.json())
-        .then(thumbnails => {
-            document.querySelectorAll('.portfolio-card').forEach(card => {
-                const link = card.querySelector('a');
-                if (link && link.href.includes('tiktok.com')) {
-                    const bg = card.querySelector('.card-bg');
-                    if (bg && !bg.classList.contains('video-bg')) {
-                        const thumbUrl = thumbnails[link.href];
-                        if (thumbUrl) {
-                            bg.style.backgroundImage = `linear-gradient(to top, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.15)), url('${thumbUrl}')`;
-                            bg.style.backgroundSize = 'cover';
-                            bg.style.backgroundPosition = 'center';
-                        }
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            portfolioCards.forEach(card => {
+                // Ignore cards not in the filterable grid
+                if (!card.closest('.modern-portfolio-grid')) return;
+                
+                if (filterValue === 'all') {
+                    card.classList.remove('hidden');
+                } else {
+                    if (card.getAttribute('data-category') === filterValue) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
                     }
                 }
             });
-        })
-        .catch(err => console.warn('Could not load thumbnails.json:', err));
+        });
+    });
+
+    // Load thumbnails from pre-fetched thumbnailsData.js
+    if (typeof thumbnailsData !== 'undefined') {
+        document.querySelectorAll('.portfolio-card').forEach(card => {
+            const link = card.querySelector('a');
+            // Make sure we have a link and it's a tiktok link
+            if (link && (link.href.includes('tiktok.com') || (link.getAttribute('href') && link.getAttribute('href').includes('tiktok.com')))) {
+                const bg = card.querySelector('.card-bg');
+                if (bg && !bg.classList.contains('video-bg')) {
+                    // Use getAttribute as fallback just in case the browser normalizes the href
+                    const href = link.getAttribute('href');
+                    const thumbUrl = thumbnailsData[link.href] || thumbnailsData[href];
+                    
+                    if (thumbUrl) {
+                        bg.style.backgroundImage = `linear-gradient(to top, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.15)), url('${thumbUrl}')`;
+                        bg.style.backgroundSize = 'cover';
+                        bg.style.backgroundPosition = 'center';
+                    } else {
+                        console.warn('Thumbnail not found in thumbnailsData for URL:', href);
+                    }
+                }
+            }
+        });
+    } else {
+        console.warn('thumbnailsData is not defined. Make sure thumbnailsData.js is loaded.');
+    }
 });

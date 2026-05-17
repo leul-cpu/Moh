@@ -119,9 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Portfolio Filtering Logic ---
     const filterBtns = document.querySelectorAll('.filter-btn');
     const portfolioCards = document.querySelectorAll('.portfolio-card');
+    const emptyState = document.getElementById('portfolio-empty-state');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
+            // Hide the empty state message once a filter is clicked
+            if (emptyState) {
+                emptyState.classList.add('hidden');
+            }
+
             // Remove active class from all
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
@@ -132,17 +138,31 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ignore cards not in the filterable grid
                 if (!card.closest('.modern-portfolio-grid')) return;
                 
+                let shouldShow = false;
                 if (filterValue === 'all') {
+                    shouldShow = true;
+                } else if (card.getAttribute('data-category') === filterValue) {
+                    shouldShow = true;
+                }
+
+                if (shouldShow) {
                     card.classList.remove('hidden');
+                    // Force a reflow to restart the CSS animation
+                    void card.offsetWidth;
+                    card.classList.add('animate-enter');
                 } else {
-                    if (card.getAttribute('data-category') === filterValue) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
+                    card.classList.add('hidden');
+                    card.classList.remove('animate-enter');
                 }
             });
         });
+    });
+
+    // Initially hide all portfolio items because no filter is active by default
+    portfolioCards.forEach(card => {
+        if (card.closest('.modern-portfolio-grid')) {
+            card.classList.add('hidden');
+        }
     });
 
     // Load thumbnails from pre-fetched thumbnailsData.js

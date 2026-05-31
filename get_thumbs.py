@@ -21,7 +21,8 @@ urls = [
     "https://vt.tiktok.com/ZSHKjD3KA/",
     "https://vt.tiktok.com/ZSHKjf5Wv/",
     "https://vt.tiktok.com/ZSx2BBGY1/",
-    "https://vt.tiktok.com/ZSx2B2XWW/"
+    "https://vt.tiktok.com/ZSx2B2XWW/",
+    "https://vt.tiktok.com/ZSxWE7E5y/"  # Added your new link here
 ]
 
 results = {}

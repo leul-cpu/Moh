@@ -14,5 +14,6 @@ const thumbnailsData = {
   "https://vt.tiktok.com/ZSHKjf5Wv/": "assets/thumbnails/thumb_ZSHKjf5Wv.jpg",
   "https://vt.tiktok.com/ZSx2BBGY1/": "assets/thumbnails/thumb_ZSx2BBGY1.jpg",
   "https://vt.tiktok.com/ZSx2B2XWW/": "assets/thumbnails/thumb_ZSx2B2XWW.jpg",
-  "https://vt.tiktok.com/ZSxWE7E5y/": "assets/thumbnails/thumb_ZSxWE7E5y.jpg"
+  "https://vt.tiktok.com/ZSxWE7E5y/": "assets/thumbnails/thumb_ZSxWE7E5y.jpg",
+  "https://vt.tiktok.com/ZSQJv829J/": "assets/thumbnails/thumb_ZSQJv829J.jpg"
 };

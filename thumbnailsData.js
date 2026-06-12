@@ -66,5 +66,9 @@ const thumbnailsData = {
   "https://vt.tiktok.com/ZSQJv829J/": {
     "thumbnail": "assets/thumbnails/thumb_ZSQJv829J.jpg",
     "video_id": "7647124135289572616"
+  },
+  "https://vt.tiktok.com/ZSQmko8rN/": {
+    "thumbnail": "assets/thumbnails/thumb_ZSQmko8rN.jpg",
+    "video_id": "7650564106398878984"
   }
 };

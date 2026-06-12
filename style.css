@@ -1324,17 +1324,18 @@ footer {
     .hero-title { font-size: 2.5rem; }
     .hero-role { font-size: 1.2rem; }
     .section-header h2 { font-size: 2rem; }
-    .card-bg { height: 200px; }
     .footer-top { flex-direction: column; gap: 1.5rem; }
     .footer-bottom { flex-direction: column; text-align: center; gap: 0.5rem; }
 
     /* Modern Grid Responsive Fixes */
     .modern-portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 250px;
+        gap: 0.75rem;
     }
     .portfolio-card.featured-card {
         grid-column: span 1;
+        grid-row: span 1;
     }
     .portfolio-filters {
         flex-wrap: wrap;
@@ -1344,7 +1345,38 @@ footer {
         padding: 0.4rem 1rem;
         font-size: 0.85rem;
     }
-    .card-content h4 { font-size: 1.1rem; }
+    
+    /* Card content adjustments for 2-column layout */
+    .card-content {
+        padding: 1rem 0.75rem 0.75rem 0.75rem;
+        transform: translateY(0) !important;
+        background: linear-gradient(to top, rgba(2, 6, 23, 0.98) 0%, rgba(2, 6, 23, 0.75) 80%, transparent 100%);
+    }
+    .portfolio-card:hover .card-content {
+        transform: translateY(0) !important;
+    }
+    .card-content h4 {
+        font-size: 0.95rem;
+        margin-bottom: 0.2rem;
+        line-height: 1.3;
+    }
+    .card-content p {
+        font-size: 0.8rem;
+    }
+    .category-tag {
+        font-size: 0.65rem;
+        padding: 0.2rem 0.5rem;
+        margin-bottom: 0.4rem;
+    }
+    .play-btn-circle {
+        display: none !important;
+    }
+    .huge-icon {
+        opacity: 0.7 !important;
+        transform: translate(-50%, -50%) scale(1) !important;
+        font-size: 2.2rem;
+        color: rgba(255, 255, 255, 0.8);
+    }
 
     /* The Vault Responsive Fixes */
     .vault-section { padding: 4rem 0; }
@@ -1376,6 +1408,21 @@ footer {
     .empty-state-icon { font-size: 2.5rem; margin-bottom: 0.5rem; }
     .empty-state-placeholder h3 { font-size: 1.2rem; }
     .empty-state-placeholder p { font-size: 0.9rem; }
+
+    /* Extra small mobile grid refinements */
+    .modern-portfolio-grid {
+        grid-auto-rows: 230px;
+        gap: 0.6rem;
+    }
+    .card-content {
+        padding: 0.8rem 0.6rem 0.6rem 0.6rem;
+    }
+    .card-content h4 {
+        font-size: 0.85rem;
+    }
+    .card-content p {
+        font-size: 0.75rem;
+    }
 }
 
 

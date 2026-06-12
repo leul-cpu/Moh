@@ -703,6 +703,38 @@
             });
         });
     </script>
+    <!-- Video Lightbox Modal -->
+    <div id="video-lightbox" class="lightbox">
+        <div class="lightbox-overlay"></div>
+        <div class="lightbox-container">
+            <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">
+                <i class="ph ph-x"></i>
+            </button>
+            <button class="lightbox-nav prev-btn" id="lightbox-prev" aria-label="Previous video">
+                <i class="ph ph-caret-left"></i>
+            </button>
+            <div class="lightbox-content">
+                <div class="lightbox-player-wrapper">
+                    <div class="lightbox-loader">
+                        <i class="ph ph-spinner-gap"></i>
+                    </div>
+                    <iframe id="lightbox-iframe" src="" allow="autoplay; fullscreen" title="TikTok Video Player"></iframe>
+                </div>
+                <div class="lightbox-meta">
+                    <span class="lightbox-category" id="lightbox-category">Category</span>
+                    <h3 class="lightbox-title" id="lightbox-title">Video Title</h3>
+                    <p class="lightbox-desc" id="lightbox-desc">Video Description</p>
+                    <a href="#" target="_blank" id="lightbox-tiktok-link" class="btn btn-outline btn-small lightbox-external-link">
+                        Watch on TikTok <i class="ph-bold ph-arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+            <button class="lightbox-nav next-btn" id="lightbox-next" aria-label="Next video">
+                <i class="ph ph-caret-right"></i>
+            </button>
+        </div>
+    </div>
+
     <script src="thumbnailsData.js"></script>
     <script src="script.js"></script>
 </body>

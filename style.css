@@ -4,7 +4,7 @@
 :root {
     --bg-dark: #0f172a;
     --bg-darker: #020617;
-    --bg-card: #1e293b;
+    --bg-card: rgba(30, 41, 59, 0.7);
     --text-main: #f8fafc;
     --text-muted: #94a3b8;
     
@@ -38,7 +38,25 @@ html {
 
 body {
     font-family: 'Inter', sans-serif;
-    background-color: var(--bg-dark);
+    /* One-page flowing gradient — single continuous background across all sections */
+    background-color: var(--bg-darker);
+    background-image:
+        radial-gradient(ellipse 80% 40% at 20% 5%,  rgba(139, 92, 246, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 30% at 80% 20%, rgba(59, 130, 246, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 35% at 10% 55%, rgba(59, 130, 246, 0.08) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 40% at 90% 70%, rgba(139, 92, 246, 0.10) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 30% at 40% 90%, rgba(236, 72, 153, 0.07) 0%, transparent 55%),
+        linear-gradient(180deg,
+            #020617 0%,
+            #0a1128 12%,
+            #0f172a 28%,
+            #0d1526 45%,
+            #0a1128 62%,
+            #080e1e 78%,
+            #030711 92%,
+            #020617 100%
+        );
+    background-attachment: fixed;
     color: var(--text-main);
     line-height: 1.6;
     overflow-x: hidden;
@@ -74,8 +92,8 @@ img, video {
 .text-light { color: var(--text-main); }
 .text-muted { color: var(--text-muted); }
 
-.bg-dark { background-color: var(--bg-dark); }
-.bg-darker { background-color: var(--bg-darker); }
+.bg-dark { background-color: rgba(15, 23, 42, 0.4); }
+.bg-darker { background-color: rgba(2, 6, 23, 0.5); }
 
 .mt-4 { margin-top: 1.5rem; }
 .mt-5 { margin-top: 3rem; }
@@ -539,9 +557,11 @@ section {
 
 .stat-card {
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 1.5rem;
     border-radius: var(--radius-md);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -586,9 +606,11 @@ section {
 
 .service-card {
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: 2.5rem 2rem;
     border-radius: var(--radius-lg);
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
     transition: var(--transition);
     position: relative;
     overflow: hidden;
@@ -933,7 +955,6 @@ section {
 .vault-section {
     padding: 6rem 0;
     position: relative;
-    background: radial-gradient(circle at center, rgba(15, 23, 42, 1) 0%, rgba(2, 6, 23, 1) 100%);
 }
 
 .vault-grid {
@@ -1022,6 +1043,11 @@ section {
 /* Brands & Tools */
 .brands-tools-wrapper {
     padding: 4rem 0;
+    background: linear-gradient(to bottom,
+        transparent 0%,
+        rgba(2, 6, 23, 0.5) 15%,
+        rgba(2, 6, 23, 0.5) 85%,
+        transparent 100%);
 }
 
 .clients-grid {
@@ -1038,8 +1064,10 @@ section {
     gap: 1.25rem;
     padding: 1.5rem;
     background: var(--bg-card);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: var(--radius-md);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     position: relative;
 }
 
@@ -1124,9 +1152,11 @@ section {
     grid-template-columns: 1fr;
     gap: 0;
     background: var(--bg-card);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
     padding: 4rem;
     border-radius: 30px;
-    border: 1px solid rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
     box-shadow: 0 30px 60px rgba(0,0,0,0.2);
     max-width: 760px;
     margin: 0 auto;
@@ -1253,7 +1283,7 @@ section {
 footer {
     border-top: 1px solid rgba(255, 255, 255, 0.05);
     padding: 4rem 0 2rem;
-    background: var(--bg-darker);
+    background: transparent;
 }
 
 .footer-top {

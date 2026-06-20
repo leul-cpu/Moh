@@ -175,27 +175,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Load thumbnails from pre-fetched thumbnailsData.js
+    // Lazy Load thumbnails from pre-fetched thumbnailsData.js
     if (typeof thumbnailsData !== 'undefined') {
-        portfolioCards.forEach(card => {
-            const link = card.querySelector('a');
-            // Make sure we have a link and it's a tiktok link
-            if (link && (link.href.includes('tiktok.com') || (link.getAttribute('href') && link.getAttribute('href').includes('tiktok.com')))) {
-                const bg = card.querySelector('.card-bg');
-                if (bg && !bg.classList.contains('video-bg')) {
-                    // Use getAttribute as fallback just in case the browser normalizes the href
-                    const href = link.getAttribute('href');
-                    const data = thumbnailsData[link.href] || thumbnailsData[href];
-                    const thumbUrl = (data && typeof data === 'object') ? data.thumbnail : data;
+        const thumbnailObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const card = entry.target;
+                    const link = card.querySelector('a');
+                    const bg = card.querySelector('.card-bg');
                     
-                    if (thumbUrl) {
-                        bg.style.backgroundImage = `linear-gradient(to top, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.15)), url('${thumbUrl}')`;
-                        bg.style.backgroundSize = 'cover';
-                        bg.style.backgroundPosition = 'center';
-                    } else {
-                        console.warn('Thumbnail not found in thumbnailsData for URL:', href);
+                    if (link && bg && !bg.classList.contains('video-bg') && !bg.style.backgroundImage) {
+                        const href = link.getAttribute('href');
+                        const data = thumbnailsData[link.href] || thumbnailsData[href];
+                        const thumbUrl = (data && typeof data === 'object') ? data.thumbnail : data;
+
+                        if (thumbUrl) {
+                            bg.style.backgroundImage = `linear-gradient(to top, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.15)), url('${thumbUrl}')`;
+                            bg.style.backgroundSize = 'cover';
+                            bg.style.backgroundPosition = 'center';
+                        }
                     }
+                    observer.unobserve(card);
                 }
+            });
+        }, { rootMargin: '200px 0px', threshold: 0.01 });
+
+        portfolioCards.forEach(card => {
+            if (card.closest('.modern-portfolio-grid')) {
+                thumbnailObserver.observe(card);
             }
         });
     } else {

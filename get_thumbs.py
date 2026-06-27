@@ -24,7 +24,9 @@ urls = [
     "https://vt.tiktok.com/ZSx2B2XWW/",
     "https://vt.tiktok.com/ZSxWE7E5y/",  # Added your new link here
     "https://vt.tiktok.com/ZSQJv829J/",
-    "https://vt.tiktok.com/ZSQmko8rN/"
+    "https://vt.tiktok.com/ZSQmko8rN/",
+    "https://vt.tiktok.com/ZSCks3jRY/",
+    "https://vt.tiktok.com/ZSCkGrwpT/"
 ]
 
 # Try to load existing data to reuse video IDs and avoid hitting TikTok's redirect check repeatedly

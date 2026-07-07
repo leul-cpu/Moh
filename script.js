@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentCategoryCards = [];
     let currentCardIndex = -1;
+    let lastActiveElement = null;
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -232,14 +233,24 @@ document.addEventListener('DOMContentLoaded', () => {
             lightboxIframe.style.display = 'block';
         };
 
+        // Accessibility: Store trigger and manage focus
+        lastActiveElement = document.activeElement;
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent main page scrolling
+
+        // Focus the close button after a small delay to ensure visibility
+        setTimeout(() => lightboxClose.focus(), 100);
     };
 
     const closeLightbox = () => {
         lightbox.classList.remove('active');
         document.body.style.overflow = ''; // Restore page scrolling
         lightboxIframe.src = ''; // Clear iframe to stop playback/audio instantly
+
+        // Accessibility: Restore focus
+        if (lastActiveElement) {
+            lastActiveElement.focus();
+        }
     };
 
     const navigateLightbox = (direction) => {
@@ -303,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
     lightboxPrev.addEventListener('click', () => navigateLightbox('prev'));
     lightboxNext.addEventListener('click', () => navigateLightbox('next'));
 
-    // Keyboard controls (Esc, Left/Right arrow keys)
+    // Keyboard controls (Esc, Tab, Left/Right arrow keys)
     document.addEventListener('keydown', (e) => {
         if (!lightbox.classList.contains('active')) return;
 
@@ -313,6 +324,23 @@ document.addEventListener('DOMContentLoaded', () => {
             navigateLightbox('next');
         } else if (e.key === 'ArrowLeft') {
             navigateLightbox('prev');
+        } else if (e.key === 'Tab') {
+            // Focus trap logic
+            const focusableElements = lightbox.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            if (e.shiftKey) { // if shift key pressed for shift + tab combination
+                if (document.activeElement === firstElement) {
+                    lastElement.focus(); // add focus for the last focusable element
+                    e.preventDefault();
+                }
+            } else { // if tab key is pressed
+                if (document.activeElement === lastElement) {
+                    firstElement.focus(); // add focus for the first focusable element
+                    e.preventDefault();
+                }
+            }
         }
     });
 

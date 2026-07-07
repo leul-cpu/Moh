@@ -75,6 +75,11 @@ a {
     transition: var(--transition);
 }
 
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 4px;
+}
+
 ul {
     list-style: none;
 }
@@ -828,13 +833,15 @@ section {
     border-radius: var(--radius-lg);
 }
 
-.portfolio-card:hover {
+.portfolio-card:hover,
+.portfolio-card:focus-within {
     transform: translateY(-8px);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     border-color: rgba(139, 92, 246, 0.3);
 }
 
-.portfolio-card:hover .card-bg {
+.portfolio-card:hover .card-bg,
+.portfolio-card:focus-within .card-bg {
     transform: scale(1.08);
 }
 
@@ -849,7 +856,8 @@ section {
     opacity: 0;
 }
 
-.portfolio-card:hover .huge-icon {
+.portfolio-card:hover .huge-icon,
+.portfolio-card:focus-within .huge-icon {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
     color: rgba(255, 255, 255, 0.8);
@@ -869,7 +877,8 @@ section {
     flex-direction: column;
 }
 
-.portfolio-card:hover .card-content {
+.portfolio-card:hover .card-content,
+.portfolio-card:focus-within .card-content {
     transform: translateY(0);
     background: linear-gradient(to top, rgba(2, 6, 23, 0.98) 0%, rgba(2, 6, 23, 0.8) 70%, transparent 100%);
     backdrop-filter: blur(4px);
@@ -883,7 +892,8 @@ section {
     transform: translateY(-15px);
 }
 
-.portfolio-card:hover .card-content.top-content {
+.portfolio-card:hover .card-content.top-content,
+.portfolio-card:focus-within .card-content.top-content {
     transform: translateY(0);
 }
 
@@ -942,7 +952,8 @@ section {
     box-shadow: 0 5px 15px var(--glow-primary);
 }
 
-.portfolio-card:hover .play-btn-circle {
+.portfolio-card:hover .play-btn-circle,
+.portfolio-card:focus-within .play-btn-circle {
     opacity: 1;
     transform: translateY(0);
 }

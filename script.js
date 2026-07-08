@@ -9,9 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.toggle('active');
         if (mobileMenu.classList.contains('active')) {
             menuIcon.classList.replace('ph-list', 'ph-x');
+            mobileBtn.setAttribute('aria-label', 'Close Menu');
             document.body.style.overflow = 'hidden'; // Prevent scrolling
         } else {
             menuIcon.classList.replace('ph-x', 'ph-list');
+            mobileBtn.setAttribute('aria-label', 'Toggle Menu');
             document.body.style.overflow = '';
         }
     };
@@ -146,9 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 emptyState.classList.add('hidden');
             }
 
-            // Remove active class from all
-            filterBtns.forEach(b => b.classList.remove('active'));
+            // Remove active class and update aria-pressed from all
+            filterBtns.forEach(b => {
+                b.classList.remove('active');
+                b.setAttribute('aria-pressed', 'false');
+            });
             btn.classList.add('active');
+            btn.setAttribute('aria-pressed', 'true');
 
             const filterValue = btn.getAttribute('data-filter');
 
@@ -220,10 +226,12 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxTitle.textContent = titleText;
         lightboxDesc.textContent = descText;
         lightboxTiktokLink.href = originalLink;
+        lightboxTiktokLink.setAttribute('aria-label', `Watch ${titleText} on TikTok`);
 
         // Show loader and set iframe src
         lightboxLoader.style.display = 'block';
         lightboxIframe.style.display = 'none';
+        lightboxIframe.title = `TikTok Video: ${titleText}`;
         
         // Use TikTok's responsive embed player format
         lightboxIframe.src = `https://www.tiktok.com/player/v1/${videoId}?music_info=1&description=0`;

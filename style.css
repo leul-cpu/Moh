@@ -271,7 +271,8 @@ section {
     transition: var(--transition);
 }
 
-.nav-links a.nav-link:hover::after {
+.nav-links a.nav-link:hover::after,
+.nav-links a.nav-link.active::after {
     width: 100%;
 }
 
@@ -319,6 +320,10 @@ section {
     font-size: 1.5rem;
     font-family: 'Outfit', sans-serif;
     font-weight: 600;
+}
+
+.mobile-menu a.active {
+    color: var(--primary);
 }
 
 /* Background Glow Effects */

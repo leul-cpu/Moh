@@ -91,6 +91,37 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollObserver.observe(el);
     });
 
+    // --- Scroll Spy Logic ---
+    const navLinks = document.querySelectorAll('.nav-link, .mobile-link, .navbar .btn');
+    const sections = document.querySelectorAll('section[id]');
+
+    const spyObserverOptions = {
+        root: null,
+        rootMargin: '-20% 0px -70% 0px',
+        threshold: 0
+    };
+
+    const spyObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const id = entry.target.getAttribute('id');
+
+                navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href === `#${id}`) {
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    } else if (href && href.startsWith('#')) {
+                        link.classList.remove('active');
+                        link.removeAttribute('aria-current');
+                    }
+                });
+            }
+        });
+    }, spyObserverOptions);
+
+    sections.forEach(section => spyObserver.observe(section));
+
     // --- Private Videos Logic ---
     const privateVideos = document.querySelectorAll('.main-video');
     

@@ -5,3 +5,7 @@
 ## 2026-07-08 - [Dynamic Accessibility for Multimedia Modals]
 **Learning:** When loading dynamic content into a lightbox (like TikTok iframes), visual titles aren't enough for screen readers. Providing a dynamic `title` for the `iframe` and a descriptive `aria-label` for external links using the content's title ensures the context is maintained across assistive technologies.
 **Action:** Always synchronize visual metadata (titles/categories) with accessibility attributes (`iframe[title]`, `a[aria-label]`) during dynamic content swaps.
+
+## 2026-07-09 - [Scroll-Spy Accessibility & Selector Logic]
+**Learning:** Scroll-Spy systems often fail when navigation links use inconsistent selectors (e.g., mixing `.nav-link` and `.btn`). Additionally, visual active states must be accompanied by `aria-current="page"` to ensure orientation for non-visual users in single-page applications.
+**Action:** Use a broad enough selector for scroll-spy observers to capture all primary navigation elements and synchronize visual `.active` classes with `aria-current="page"`.

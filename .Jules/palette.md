@@ -9,3 +9,7 @@
 ## 2026-07-09 - [Scroll-Spy Accessibility & Selector Logic]
 **Learning:** Scroll-Spy systems often fail when navigation links use inconsistent selectors (e.g., mixing `.nav-link` and `.btn`). Additionally, visual active states must be accompanied by `aria-current="page"` to ensure orientation for non-visual users in single-page applications.
 **Action:** Use a broad enough selector for scroll-spy observers to capture all primary navigation elements and synchronize visual `.active` classes with `aria-current="page"`.
+
+## 2026-07-10 - [Inconsistent Focus Feedback across Card Components]
+**Learning:** While the primary portfolio grid implements `:focus-within` to mirror hover states, secondary card-like elements such as `.vault-card`, `.client-card`, and `.contact-item` often lack this, creating an inconsistent experience for keyboard users who expect visual feedback when interacting with these components.
+**Action:** When implementing hover effects for card-like interactive components, always pair them with `:focus-within` and `:focus-visible` to ensure visual parity between mouse and keyboard navigation.

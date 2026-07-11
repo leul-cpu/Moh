@@ -995,10 +995,12 @@ section {
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
-.vault-card:hover {
+.vault-card:hover,
+.vault-card:focus-within {
     transform: translateY(-8px);
     border-color: rgba(220, 38, 38, 0.5);
     box-shadow: 0 20px 40px rgba(220, 38, 38, 0.15), 0 0 20px rgba(220, 38, 38, 0.1);
+    outline: none;
 }
 
 .vault-badge {
@@ -1090,9 +1092,11 @@ section {
     position: relative;
 }
 
-.client-card:hover {
+.client-card:hover,
+.client-card:focus-visible {
     background: rgba(30, 41, 59, 1);
     border-color: rgba(139, 92, 246, 0.3);
+    outline: none;
 }
 
 .client-avatar {
@@ -1127,7 +1131,8 @@ section {
     transition: var(--transition);
 }
 
-.client-card:hover .link-icon {
+.client-card:hover .link-icon,
+.client-card:focus-visible .link-icon {
     color: var(--primary);
     transform: translateY(-50%) translate(5px, -5px);
 }
@@ -1217,9 +1222,11 @@ section {
     transition: var(--transition);
 }
 
-.contact-item:hover .icon-box {
+.contact-item:hover .icon-box,
+.contact-item:focus-visible .icon-box {
     background: var(--primary);
     color: white;
+    outline: none;
 }
 
 .contact-item h5 {

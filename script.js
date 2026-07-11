@@ -396,3 +396,16 @@ document.addEventListener('DOMContentLoaded', () => {
         allWorksBtn.click();
     }
 });
+
+// Scroll Progress Indicator Logic
+const updateScrollProgress = () => {
+    const scrollProgress = document.getElementById('scroll-progress');
+    if (scrollProgress) {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (window.scrollY / totalHeight) * 100;
+        scrollProgress.style.width = `${progress}%`;
+    }
+};
+
+window.addEventListener('scroll', updateScrollProgress);
+updateScrollProgress(); // Initial call to set progress on page load

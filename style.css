@@ -1809,3 +1809,15 @@ video:-webkit-full-screen {
         right: 20%;
     }
 }
+
+/* Scroll Progress Indicator */
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    width: 0%;
+    z-index: 2000;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    transition: width 0.1s ease;
+}

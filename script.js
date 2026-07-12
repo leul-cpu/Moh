@@ -6,11 +6,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuIcon = mobileBtn.querySelector('i');
 
     const toggleMenu = () => {
-        mobileMenu.classList.toggle('active');
-        if (mobileMenu.classList.contains('active')) {
+        const isActive = mobileMenu.classList.toggle('active');
+        mobileBtn.setAttribute('aria-expanded', isActive);
+
+        if (isActive) {
             menuIcon.classList.replace('ph-list', 'ph-x');
             mobileBtn.setAttribute('aria-label', 'Close Menu');
             document.body.style.overflow = 'hidden'; // Prevent scrolling
+            // Focus the first link after a short delay for animation
+            setTimeout(() => {
+                const firstLink = mobileMenu.querySelector('.mobile-link');
+                if (firstLink) firstLink.focus();
+            }, 300);
         } else {
             menuIcon.classList.replace('ph-x', 'ph-list');
             mobileBtn.setAttribute('aria-label', 'Toggle Menu');
@@ -26,6 +33,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleMenu();
             }
         });
+    });
+
+    // Close on Escape and Focus Trap for Mobile Menu
+    document.addEventListener('keydown', (e) => {
+        if (!mobileMenu.classList.contains('active')) return;
+
+        if (e.key === 'Escape') {
+            toggleMenu();
+            mobileBtn.focus();
+        } else if (e.key === 'Tab') {
+            const focusableElements = mobileMenu.querySelectorAll('.mobile-link');
+            const allFocusable = [mobileBtn, ...Array.from(focusableElements)];
+            const firstElement = allFocusable[0];
+            const lastElement = allFocusable[allFocusable.length - 1];
+
+            if (e.shiftKey) {
+                if (document.activeElement === firstElement) {
+                    lastElement.focus();
+                    e.preventDefault();
+                }
+            } else {
+                if (document.activeElement === lastElement) {
+                    firstElement.focus();
+                    e.preventDefault();
+                }
+            }
+        }
     });
 
     // Sticky Navbar

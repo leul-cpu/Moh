@@ -37,13 +37,14 @@
                 <li><a href="#clients" class="nav-link">Clients</a></li>
                 <li><a href="#contact" class="btn btn-primary btn-sm">Contact</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu">
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false"
+                aria-controls="mobile-menu">
                 <i class="ph ph-list"></i>
             </button>
         </div>
 
         <!-- mobile menu overlay -->
-        <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
             <ul>
                 <li><a href="#about" class="mobile-link">About</a></li>
                 <li><a href="#services" class="mobile-link">Services</a></li>

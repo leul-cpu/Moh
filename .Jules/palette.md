@@ -14,6 +14,4 @@
 **Learning:** While the primary portfolio grid implements `:focus-within` to mirror hover states, secondary card-like elements such as `.vault-card`, `.client-card`, and `.contact-item` often lack this, creating an inconsistent experience for keyboard users who expect visual feedback when interacting with these components.
 **Action:** When implementing hover effects for card-like interactive components, always pair them with `:focus-within` and `:focus-visible` to ensure visual parity between mouse and keyboard navigation.
 
-## 2026-07-11 - [Skip-to-Content Implementation with Fixed Navigation]
-**Learning:** In applications with fixed headers or navigation bars, "Skip to content" links require a higher `z-index` (e.g., 3000+) to ensure they appear on top of all other elements when focused.
-**Action:** Always verify that skip-link elements are positioned with a z-index exceeding any fixed or sticky navigation components to maintain visibility for keyboard users.
+

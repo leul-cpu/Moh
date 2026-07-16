@@ -63,6 +63,10 @@ const thumbnailsData = {
     "thumbnail": "assets/thumbnails/thumb_ZSxWE7E5y.jpg",
     "video_id": "7643045757225946386"
   },
+  "https://vt.tiktok.com/ZSXDvSJfA/": {
+    "thumbnail": "assets/thumbnails/thumb_ZSXDvSJfA.jpg",
+    "video_id": "7662307921669229842"
+  },
   "https://vt.tiktok.com/ZSQJv829J/": {
     "thumbnail": "assets/thumbnails/thumb_ZSQJv829J.jpg",
     "video_id": "7647124135289572616"

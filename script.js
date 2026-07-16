@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (thumbUrl) {
                             bg.style.backgroundImage = `linear-gradient(to top, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.15)), url('${thumbUrl}')`;
                             bg.style.backgroundSize = 'cover';
-                            bg.style.backgroundPosition = 'center';
+                            bg.style.backgroundPosition = card.dataset.thumbPosition || 'center';
                         }
                     }
                     observer.unobserve(card);

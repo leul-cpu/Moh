@@ -14,4 +14,7 @@
 **Learning:** While the primary portfolio grid implements `:focus-within` to mirror hover states, secondary card-like elements such as `.vault-card`, `.client-card`, and `.contact-item` often lack this, creating an inconsistent experience for keyboard users who expect visual feedback when interacting with these components.
 **Action:** When implementing hover effects for card-like interactive components, always pair them with `:focus-within` and `:focus-visible` to ensure visual parity between mouse and keyboard navigation.
 
+## 2026-07-11 - [Dynamic UI Hints via JS in Strict CSS Environments]
+**Learning:** In repositories with strict "no custom CSS" rules and limited utility classes, JS-driven micro-UX (like dynamic element counts) can still achieve high polish by combining semantic HTML tags (e.g., `<small>`) with minimal, targeted inline styles to match existing aesthetics without polluting stylesheets.
+**Action:** Use semantic elements and existing classes first; fallback to precise inline styles for micro-adjustments only when necessary to maintain design consistency.
 

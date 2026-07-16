@@ -183,11 +183,39 @@ document.addEventListener('DOMContentLoaded', () => {
         videoObserver.observe(video);
     });
 
-    // --- Portfolio Filtering Logic ---
     // --- Portfolio Filtering & Lightbox Logic ---
     const filterBtns = document.querySelectorAll('.filter-btn');
     const portfolioCards = document.querySelectorAll('.portfolio-card');
     const emptyState = document.getElementById('portfolio-empty-state');
+
+    // Dynamic Portfolio Counts
+    if (filterBtns.length && portfolioCards.length) {
+        const gridCards = Array.from(portfolioCards).filter(c => c.closest('.modern-portfolio-grid'));
+        const counts = { all: gridCards.length };
+        gridCards.forEach(card => {
+            const cat = card.getAttribute('data-category');
+            if (cat) counts[cat] = (counts[cat] || 0) + 1;
+        });
+
+        filterBtns.forEach(btn => {
+            const filter = btn.getAttribute('data-filter');
+            const count = counts[filter] || 0;
+
+            // Idempotency: check if label already exists
+            let countLabel = btn.querySelector('.filter-count');
+            if (!countLabel) {
+                // Add a space for separation
+                btn.appendChild(document.createTextNode(' '));
+                countLabel = document.createElement('small');
+                countLabel.className = 'filter-count text-muted';
+                // Using a small amount of inline style for fine-tuning as no
+                // utility classes for opacity/spacing exist in this custom CSS.
+                countLabel.style.opacity = '0.7';
+                btn.appendChild(countLabel);
+            }
+            countLabel.textContent = `(${count})`;
+        });
+    }
 
     // Lightbox DOM elements
     const lightbox = document.getElementById('video-lightbox');

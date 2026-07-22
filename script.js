@@ -452,6 +452,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Dynamic Portfolio Card ARIA labels for Screen Reader accessibility
+    portfolioCards.forEach(card => {
+        const link = card.querySelector('.play-btn-circle');
+        if (!link) return;
+        const h4 = card.querySelector('h4');
+        const p = card.querySelector('p');
+        const titleText = h4 ? h4.textContent.trim() : '';
+        const descText = p ? p.textContent.trim() : '';
+        let ariaLabel = 'Play video';
+        if (titleText && descText) {
+            ariaLabel = `Play ${titleText} - ${descText}`;
+        } else if (titleText) {
+            ariaLabel = `Play ${titleText}`;
+        } else if (descText) {
+            ariaLabel = `Play ${descText}`;
+        }
+        link.setAttribute('aria-label', ariaLabel);
+    });
+
     // Trigger programmatic click on "All Works" button to show them by default
     const allWorksBtn = document.querySelector('.filter-btn[data-filter="all"]');
     if (allWorksBtn) {

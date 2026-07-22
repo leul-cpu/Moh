@@ -755,9 +755,12 @@ section {
     backdrop-filter: blur(10px);
 }
 
-.filter-btn:hover {
+.filter-btn:hover,
+.filter-btn:focus-visible {
     background: rgba(255, 255, 255, 0.1);
     color: var(--text-main);
+    outline: none;
+    box-shadow: 0 0 0 2px var(--primary);
 }
 
 .filter-btn.active {
@@ -766,6 +769,10 @@ section {
     border-color: transparent;
     box-shadow: 0 6px 20px var(--glow-primary);
     transform: translateY(-3px);
+}
+
+.filter-btn.active:focus-visible {
+    box-shadow: 0 6px 20px var(--glow-primary), 0 0 0 2px var(--primary);
 }
 
 /* Empty State Placeholder */
@@ -1028,10 +1035,13 @@ section {
     transform: translateY(0);
 }
 
-.play-btn-circle:hover {
+.play-btn-circle:hover,
+.play-btn-circle:focus-visible {
     background: var(--text-main);
     color: var(--primary);
     transform: translateY(-3px) scale(1.1) !important;
+    outline: 2px solid var(--text-main);
+    outline-offset: 2px;
 }
 /* ==========================================================================
    The Vault (Private Videos) Section
@@ -1740,11 +1750,13 @@ video:-webkit-full-screen {
     backdrop-filter: blur(10px);
 }
 
-.lightbox-close:hover {
+.lightbox-close:hover,
+.lightbox-close:focus-visible {
     background: rgba(220, 38, 38, 0.2);
     border-color: rgba(220, 38, 38, 0.5);
     color: #ef4444;
     transform: rotate(90deg);
+    outline: none;
 }
 
 .lightbox-nav {
@@ -1764,12 +1776,14 @@ video:-webkit-full-screen {
     flex-shrink: 0;
 }
 
-.lightbox-nav:hover {
+.lightbox-nav:hover,
+.lightbox-nav:focus-visible {
     background: linear-gradient(135deg, var(--primary), var(--secondary));
     color: white;
     border-color: transparent;
     box-shadow: 0 5px 15px var(--glow-primary);
     transform: scale(1.08);
+    outline: none;
 }
 
 .lightbox-nav:active {

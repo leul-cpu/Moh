@@ -216,7 +216,8 @@ section {
     box-shadow: 0 4px 15px var(--glow-primary);
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus-visible {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px var(--glow-primary);
     filter: brightness(1.1);
@@ -228,7 +229,8 @@ section {
     border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.btn-outline:hover {
+.btn-outline:hover,
+.btn-outline:focus-visible {
     border-color: var(--primary);
     background: rgba(139, 92, 246, 0.05);
     transform: translateY(-2px);
@@ -319,6 +321,13 @@ section {
     color: var(--text-main);
     font-size: 1.8rem;
     cursor: pointer;
+    transition: var(--transition);
+}
+
+.mobile-menu-btn:hover,
+.mobile-menu-btn:focus-visible {
+    color: var(--primary);
+    transform: scale(1.15);
 }
 
 .mobile-menu {
@@ -759,8 +768,6 @@ section {
 .filter-btn:focus-visible {
     background: rgba(255, 255, 255, 0.1);
     color: var(--text-main);
-    outline: none;
-    box-shadow: 0 0 0 2px var(--primary);
 }
 
 .filter-btn.active {
@@ -769,10 +776,6 @@ section {
     border-color: transparent;
     box-shadow: 0 6px 20px var(--glow-primary);
     transform: translateY(-3px);
-}
-
-.filter-btn.active:focus-visible {
-    box-shadow: 0 6px 20px var(--glow-primary), 0 0 0 2px var(--primary);
 }
 
 /* Empty State Placeholder */
@@ -1329,7 +1332,8 @@ section {
     transition: var(--transition);
 }
 
-.social-icon:hover {
+.social-icon:hover,
+.social-icon:focus-visible {
     background: var(--primary);
     transform: translateY(-3px);
 }
@@ -1750,13 +1754,20 @@ video:-webkit-full-screen {
     backdrop-filter: blur(10px);
 }
 
-.lightbox-close:hover,
+.lightbox-close:hover {
+    background: rgba(220, 38, 38, 0.2);
+    border-color: rgba(220, 38, 38, 0.5);
+    color: #ef4444;
+    transform: rotate(90deg);
+}
+
 .lightbox-close:focus-visible {
     background: rgba(220, 38, 38, 0.2);
     border-color: rgba(220, 38, 38, 0.5);
     color: #ef4444;
     transform: rotate(90deg);
-    outline: none;
+    outline: 2px solid #ef4444;
+    outline-offset: 4px;
 }
 
 .lightbox-nav {
@@ -1783,7 +1794,6 @@ video:-webkit-full-screen {
     border-color: transparent;
     box-shadow: 0 5px 15px var(--glow-primary);
     transform: scale(1.08);
-    outline: none;
 }
 
 .lightbox-nav:active {

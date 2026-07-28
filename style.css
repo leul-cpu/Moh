@@ -1283,6 +1283,12 @@ section {
     display: flex;
     align-items: center;
     gap: 1rem;
+    transition: var(--transition);
+}
+
+.contact-item:hover,
+.contact-item:focus-visible {
+    transform: translateX(6px);
 }
 
 .icon-box {

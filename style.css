@@ -1291,6 +1291,12 @@ section {
     display: flex;
     align-items: center;
     gap: 1rem;
+    transition: var(--transition);
+}
+
+.contact-item:hover,
+.contact-item:focus-visible {
+    transform: translateX(6px);
 }
 
 .icon-box {
@@ -1763,7 +1769,13 @@ video:-webkit-full-screen {
     backdrop-filter: blur(10px);
 }
 
-.lightbox-close:hover,
+.lightbox-close:hover {
+    background: rgba(220, 38, 38, 0.2);
+    border-color: rgba(220, 38, 38, 0.5);
+    color: #ef4444;
+    transform: rotate(90deg);
+}
+
 .lightbox-close:focus-visible {
     background: rgba(220, 38, 38, 0.2);
     border-color: rgba(220, 38, 38, 0.5);

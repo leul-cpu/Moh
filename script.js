@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Lightbox interactivity functions
-    const openVideo = (videoId, cardElement) => {
+    const openVideo = (videoId, cardElement, isNavigation = false) => {
         const titleText = cardElement.querySelector('h4').textContent.trim();
         const descText = cardElement.querySelector('p').textContent.trim();
         const originalLink = cardElement.querySelector('a').href;
@@ -335,7 +335,21 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         // Accessibility: Store trigger and manage focus
-        lastActiveElement = document.activeElement;
+        if (!isNavigation) {
+            lastActiveElement = document.activeElement;
+        } else {
+            lastActiveElement = cardElement.querySelector('.play-btn-circle') || cardElement.querySelector('a');
+        }
+
+        // Hide navigation buttons if there is only one card in the active category
+        if (currentCategoryCards.length <= 1) {
+            lightboxPrev.style.display = 'none';
+            lightboxNext.style.display = 'none';
+        } else {
+            lightboxPrev.style.display = '';
+            lightboxNext.style.display = '';
+        }
+
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent main page scrolling
 
@@ -369,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const nextData = thumbnailsData[nextLink.href] || thumbnailsData[nextHref];
 
         if (nextData && nextData.video_id) {
-            openVideo(nextData.video_id, nextCard);
+            openVideo(nextData.video_id, nextCard, true);
         }
     };
 
@@ -427,7 +441,8 @@ document.addEventListener('DOMContentLoaded', () => {
             navigateLightbox('prev');
         } else if (e.key === 'Tab') {
             // Focus trap logic
-            const focusableElements = lightbox.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+            const focusableElements = Array.from(lightbox.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'))
+                .filter(el => el.offsetWidth > 0 || el.offsetHeight > 0);
             const firstElement = focusableElements[0];
             const lastElement = focusableElements[focusableElements.length - 1];
 

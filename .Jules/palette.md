@@ -21,3 +21,7 @@
 ## 2026-07-12 - [Targeted Line formatting vs. Full-File Formatting]
 **Learning:** In repositories with strict lines-of-code budgets (< 50 lines) or missing project-wide build/lint tooling, running global formatters can introduce massive changesets (whitespace/indents/quotes) that obscure high-impact UX improvements and clutter git history.
 **Action:** Always format modified code segments manually or locally instead of running global full-file formatting, ensuring the final patch remains concise and easy to review.
+
+## 2026-07-29 - [Focus Restorations in Modals with Internal Navigation]
+**Learning:** In modals with internal navigation (e.g., Lightboxes with Next/Prev buttons), simply tracking the `document.activeElement` when the modal opens is insufficient. Navigating inside the modal must preserve the original trigger outside the modal as the restoration point, rather than accidentally overwriting it with modal navigation buttons. If overwritten, closing the modal results in focus loss to the body.
+**Action:** Explicitly track the restoration element and protect it from being overwritten during intra-modal navigation. Ensure any "next/prev" actions dynamically trace back to the corresponding trigger element on the parent page.

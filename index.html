@@ -17,41 +17,53 @@
     </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@400;500;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body class="text-light">
     <a href="#main-content" class="skip-link">Skip to content</a>
-    <div id="scroll-progress" aria-hidden="true"></div>
+
     <!-- navigation -->
     <nav class="navbar" id="navbar">
-        <div class="container nav-content">
-            <a href="#home" class="logo">Moh<span>.</span></a>
-            <ul class="nav-links">
-                <li><a href="#about" class="nav-link">About</a></li>
-                <li><a href="#services" class="nav-link">Services</a></li>
-                <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-                <li><a href="#clients" class="nav-link">Clients</a></li>
-                <li><a href="#contact" class="btn btn-primary btn-sm">Contact</a></li>
+        <div class="nav-pill" id="nav-pill">
+            <!-- Logo -->
+            <a href="#home" class="logo" aria-label="Mohammed Alewi – Home">
+                <img src="IMG_0659.webp" class="logo-badge" alt="" aria-hidden="true">
+                <span class="logo-text">MOH<span class="logo-dot">.</span></span>
+            </a>
+
+            <!-- Desktop links -->
+            <ul class="nav-links" role="list">
+                <li><a href="#about"        class="nav-link">About</a></li>
+                <li><a href="#certificates" class="nav-link">Certs</a></li>
+                <li><a href="#services"     class="nav-link">Services</a></li>
+                <li><a href="#portfolio"    class="nav-link">Portfolio</a></li>
+                <li><a href="#clients"      class="nav-link">Clients</a></li>
             </ul>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle Menu" aria-expanded="false"
-                aria-controls="mobile-menu">
-                <i class="ph ph-list"></i>
-            </button>
+
+            <!-- CTA -->
+            <div class="nav-end">
+                <a href="#contact" class="nav-cta-btn">Let's Talk</a>
+            </div>
         </div>
+
+        <button class="mobile-menu-btn" id="mobile-menu-btn"
+                aria-label="Toggle Menu" aria-expanded="false"
+                aria-controls="mobile-menu">
+            <i class="ph ph-list" aria-hidden="true"></i>
+        </button>
 
         <!-- mobile menu overlay -->
         <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
             <ul>
-                <li><a href="#about" class="mobile-link">About</a></li>
-                <li><a href="#services" class="mobile-link">Services</a></li>
-                <li><a href="#portfolio" class="mobile-link">Portfolio</a></li>
-                <li><a href="#clients" class="mobile-link">Clients</a></li>
-                <li><a href="#contact" class="mobile-link">Contact</a></li>
+                <li><a href="#about"        class="mobile-link">About</a></li>
+                <li><a href="#certificates" class="mobile-link">Certificates</a></li>
+                <li><a href="#services"     class="mobile-link">Services</a></li>
+                <li><a href="#portfolio"    class="mobile-link">Portfolio</a></li>
+                <li><a href="#clients"      class="mobile-link">Clients</a></li>
+                <li><a href="#contact"      class="mobile-link">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -59,42 +71,72 @@
     <main id="main-content">
         <!-- home / hero section -->
         <section class="hero" id="home">
-            <div class="bg-glow orb-1"></div>
-            <div class="bg-glow orb-2"></div>
+            <div class="hero-noise-texture" aria-hidden="true"></div>
+            <div class="timeline-ruler" aria-hidden="true"></div>
+            
             <div class="container hero-container">
-                <div class="hero-content fade-up">
-                    <div class="badge"><span class="status-dot"></span> Available for Work</div>
+                <div class="hero-content">
+                    <p class="availability-badge" aria-label="Status: Available for work">
+                        <span class="recording-dot"></span>AVAILABLE FOR WORK<span class="blinking-cursor"></span>
+                    </p>
                     <h1 class="hero-title">Mohammed Alewi</h1>
-                    <h2 class="hero-role">
-                        <span class="gradient-text">Social Media Manager</span> <span class="divider">•</span>
-                        <span class="gradient-text">Digital Marketer</span> <span class="divider">•</span>
-                        <span class="gradient-text">Video Editor</span>
-                    </h2>
-                    <p class="hero-description">Helping brands grow through creative digital content and strategic
-                        social media marketing.</p>
+                    <div class="hero-role-tags">
+                        <span class="role-tag">Social Media Manager</span>
+                        <span class="role-tag">Digital Marketer</span>
+                        <span class="role-tag">Video Editor</span>
+                    </div>
+                    <p class="hero-description">I manage social accounts and edit short-form videos for brands in Ethiopia.</p>
                     <div class="hero-actions">
                         <a href="#portfolio" class="btn btn-primary">
-                            View My Work <i class="ph-bold ph-arrow-right"></i>
+                            View My Work <i class="ph-bold ph-arrow-right" aria-hidden="true"></i>
                         </a>
                         <a href="#contact" class="btn btn-outline">Let's Talk</a>
                     </div>
                 </div>
-                <div class="hero-visual fade-in">
-                    <div class="visual-card">
-                        <div class="hero-img-container">
-                            <img src="IMG_0659.webp" alt="Mohammed Alewi" class="hero-img" decoding="async"
-                                fetchpriority="high">
-                            <div class="pulse-ring"></div>
+                
+                <div class="hero-visual">
+                    <div class="reel-frame" style="background-image: url('IMG_0659.webp');">
+                        <div class="reel-overlay-grad"></div>
+                        
+                        <!-- Top progress segments -->
+                        <div class="reel-story-bars">
+                            <div class="story-bar active"><span class="story-fill"></span></div>
+                            <div class="story-bar"></div>
+                            <div class="story-bar"></div>
                         </div>
-                        <div class="floating-badge badge-1">
-                            <i class="ph-fill ph-trend-up"></i> Growth
+                        
+                        <!-- Timecode / REC status -->
+                        <div class="reel-timecode">
+                            <span class="rec-blink-dot"></span>REC 00:04
                         </div>
-                        <div class="floating-badge badge-2">
-                            <i class="ph-fill ph-sparkle"></i> Creative
+                        
+                        <!-- Vertical interaction column -->
+                        <div class="reel-actions-column">
+                            <div class="reel-action-item">
+                                <i class="ph-bold ph-heart"></i>
+                                <span class="action-count">2.4K</span>
+                            </div>
+                            <div class="reel-action-item">
+                                <i class="ph-bold ph-chat-circle"></i>
+                                <span class="action-count">182</span>
+                            </div>
+                            <div class="reel-action-item">
+                                <i class="ph-bold ph-share-network"></i>
+                                <span class="action-count">48</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Bottom captions overlay -->
+                        <div class="reel-caption-wrap">
+                            <div class="reel-handle">@mohammed_alewi</div>
+                            <p class="reel-caption-text">Building content that performs.</p>
                         </div>
                     </div>
                 </div>
             </div>
+            <a href="#about" class="scroll-indicator" aria-label="Scroll to About section">
+                <i class="ph ph-caret-down" aria-hidden="true"></i>
+            </a>
         </section>
 
         <!-- about section -->
@@ -102,7 +144,7 @@
             <div class="container">
                 <div class="section-header fade-up">
                     <h2>About Me</h2>
-                    <div class="header-line"></div>
+                    <div class="header-line" role="presentation"></div>
                 </div>
                 <div class="about-grid">
                     <div class="about-text fade-up">
@@ -112,35 +154,61 @@
                             narratives that resonate with audiences. My expertise lies at the intersection of creative
                             media production and analytical strategy.</p>
 
-                        <h4 class="mt-4 mb-3"
-                            style="margin-top: 1.5rem; margin-bottom: 1rem; font-family: 'Outfit', sans-serif;">Core
-                            Expertise:</h4>
-                        <ul class="expertise-list">
-                            <li><i class="ph-fill ph-users-three text-primary"></i> Social media growth & engagement
-                            </li>
-                            <li><i class="ph-fill ph-film-strip text-primary"></i> Short-form video content creation
-                            </li>
-                            <li><i class="ph-fill ph-megaphone text-primary"></i> Digital brand promotion</li>
-                            <li><i class="ph-fill ph-device-mobile-camera text-primary"></i> Mobile video production &
-                                editing</li>
-                        </ul>
+                        <div class="skill-indicators mt-4">
+                            <h4 class="mb-3">Skills & Impact</h4>
+                            <div class="skill-bar-group">
+                                <div class="skill-label"><span>Social Media Strategy</span><span>95%</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 95%;"></div></div>
+                            </div>
+                            <div class="skill-bar-group">
+                                <div class="skill-label"><span>Short-Form Video Editing</span><span>90%</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
+                            </div>
+                            <div class="skill-bar-group">
+                                <div class="skill-label"><span>Brand Growth & Promotion</span><span>88%</span></div>
+                                <div class="skill-bar"><div class="skill-progress" style="width: 88%;"></div></div>
+                            </div>
+                        </div>
                     </div>
                     <div class="about-stats fade-up delay-1">
                         <div class="stat-card">
-                            <div class="stat-icon"><i class="ph-duotone ph-rocket-launch"></i></div>
-                            <h3>Growth</h3>
-                            <p>Data-Driven Strategy</p>
+                            <div class="stat-number">50M+</div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-label">Total Video Views</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon"><i class="ph-duotone ph-video"></i></div>
-                            <h3>Creative</h3>
-                            <p>Video Production</p>
+                            <div class="stat-number">15+</div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-label">Brand Clients</div>
                         </div>
                         <div class="stat-card">
-                            <div class="stat-icon"><i class="ph-duotone ph-handshake"></i></div>
-                            <h3>Community</h3>
-                            <p>Brand Engagement</p>
+                            <div class="stat-number">100+</div>
+                            <div class="stat-divider"></div>
+                            <div class="stat-label">Reels & TikToks Edited</div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- certificates section -->
+        <section class="certificates" id="certificates">
+            <div class="container">
+                <div class="section-header fade-up">
+                    <h2>Certifications</h2>
+                    <div class="header-line"></div>
+                </div>
+                <div class="certificates-list fade-up">
+                    <div class="cert-item">
+                        <div class="cert-info">
+                            <h4>Social Media Manager and Digital Solutions</h4>
+                            <p>Invsion Africa</p>
+                        </div>
+                        <span class="cert-year">July 29,2026</span>
+                        <a href="Certificate.jpg" target="_blank" class="cert-link cert-img-link">
+                            <img src="Certificate.jpg" alt="Digital Solutions Certificate" class="cert-thumb">
+                            <span>View →</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -152,43 +220,38 @@
                 <div class="section-header center fade-up">
                     <h2>My Services</h2>
                     <div class="header-line mx-auto"></div>
-                    <p class="section-subtitle">Comprehensive digital solutions to elevate your brand's presence.</p>
+                    <p class="section-subtitle">Here's what I can do for your brand.</p>
                 </div>
                 <div class="services-grid">
-                    <div class="service-card fade-up">
-                        <div class="service-icon"><i class="ph-duotone ph-share-network"></i></div>
+                    <div class="service-card service-card--social fade-up">
+                        <div class="service-icon"><i class="ph-duotone ph-share-network" aria-hidden="true"></i></div>
                         <h3>Social Media Mgmt</h3>
-                        <p>End-to-end management of social profiles, engaging audiences, and growing followers
-                            organically.</p>
+                        <p>End-to-end management of social profiles, engaging audiences, and growing followers organically.</p>
                     </div>
-                    <div class="service-card fade-up delay-1">
-                        <div class="service-icon"><i class="ph-duotone ph-scissors"></i></div>
+                    <div class="service-card service-card--video fade-up delay-1">
+                        <div class="service-icon"><i class="ph-duotone ph-scissors" aria-hidden="true"></i></div>
                         <h3>Video Editing</h3>
-                        <p>Professional editing for short-form content that captures attention in the first three
-                            seconds.</p>
+                        <p>Professional editing for short-form content that captures attention in the first three seconds.</p>
                     </div>
-                    <div class="service-card fade-up delay-2">
-                        <div class="service-icon"><i class="ph-duotone ph-pencil-simple-line"></i></div>
+                    <div class="service-card service-card--content fade-up delay-2">
+                        <div class="service-icon"><i class="ph-duotone ph-pencil-simple-line" aria-hidden="true"></i></div>
                         <h3>Content Creation</h3>
-                        <p>Ideation and production of high-quality visuals tailored strictly to your brand's identity.
-                        </p>
+                        <p>Ideation and production of high-quality visuals tailored strictly to your brand's identity.</p>
                     </div>
-                    <div class="service-card fade-up">
-                        <div class="service-icon"><i class="ph-duotone ph-strategy"></i></div>
+                    <div class="service-card service-card--strategy fade-up">
+                        <div class="service-icon"><i class="ph-duotone ph-strategy" aria-hidden="true"></i></div>
                         <h3>Digital Strategy</h3>
                         <p>Data-driven campaigns and strategic planning to maximize reach, conversions, and ROI.</p>
                     </div>
-                    <div class="service-card fade-up delay-1">
-                        <div class="service-icon"><i class="ph-duotone ph-pen-nib"></i></div>
+                    <div class="service-card service-card--design fade-up delay-1">
+                        <div class="service-icon"><i class="ph-duotone ph-pen-nib" aria-hidden="true"></i></div>
                         <h3>Graphic Design</h3>
-                        <p>Creating eye-catching visuals, banners, and branded assets that make your identity stand out.
-                        </p>
+                        <p>Creating eye-catching visuals, banners, and branded assets that make your identity stand out.</p>
                     </div>
-                    <div class="service-card fade-up delay-2">
-                        <div class="service-icon"><i class="ph-duotone ph-camera"></i></div>
+                    <div class="service-card service-card--event fade-up delay-2">
+                        <div class="service-icon"><i class="ph-duotone ph-camera" aria-hidden="true"></i></div>
                         <h3>Event Media</h3>
-                        <p>Dynamic on-site content capture to summarize and highlight your live events and activations.
-                        </p>
+                        <p>Dynamic on-site content capture to summarize and highlight your live events and activations.</p>
                     </div>
                 </div>
             </div>
@@ -200,8 +263,7 @@
                 <div class="section-header fade-up center">
                     <h2>Selected Works</h2>
                     <div class="header-line mx-auto"></div>
-                    <p class="section-subtitle">Explore my recent creative projects, viral campaigns, and aesthetic
-                        edits.</p>
+                    <p class="section-subtitle">Recent work across fashion, football, cafes, and product promos.</p>
                 </div>
 
                 <!-- Modern Portfolio Filters -->
@@ -226,12 +288,13 @@
                 <div class="modern-portfolio-grid mt-5 fade-up">
 
                     <!-- Featured: New Video -->
-                    <div class="portfolio-card featured-card" data-category="new-arrivals" data-thumb-position="center 25%">
+                    <div class="portfolio-card featured-card" data-category="new-arrivals"
+                        data-thumb-position="center 25%">
                         <div class="card-bg">
                             <i class="ph-duotone ph-play-circle huge-icon text-primary"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag gradient-tag"><i class="ph-fill ph-fire"></i>Featured</span>
+                            <span class="category-tag gradient-tag">Featured</span>
                             <h4>Eat Healthy. Feel Great. Relax in Comfort.</h4>
                             <p>Madiga Cafe</p>
                             <a href="https://vt.tiktok.com/ZSXDvSJfA/" target="_blank" class="play-btn-circle"><i
@@ -244,14 +307,12 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag gradient-tag"><i class="ph-fill ph-fire"></i>Most viewed</span>
+                            <span class="category-tag gradient-tag">Most viewed</span>
                             <p>Top performing video</p>
                             <a href="https://vt.tiktok.com/ZSHKjf5Wv/" target="_blank" class="play-btn-circle"><i
                                     class="ph-fill ph-play"></i></a>
                         </div>
                     </div>
-
-
 
                     <!-- Sheva Toys -->
                     <div class="portfolio-card" data-category="new-arrivals">
@@ -259,7 +320,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-gift"></i> Sheva Toys</span>
+                            <span class="category-tag">Sheva Toys</span>
                             <h4>Coming Soon Teaser</h4>
                             <p>Creative storefront promo video</p>
                             <a href="https://vt.tiktok.com/ZSQJv829J/" target="_blank" class="play-btn-circle"><i
@@ -273,7 +334,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-buildings"></i> Atlantic Trading</span>
+                            <span class="category-tag">Atlantic Trading</span>
                             <h4>Chairs & Table Set</h4>
                             <p>Outdoor furniture promotion</p>
                             <a href="https://vt.tiktok.com/ZSx2BBGY1/" target="_blank" class="play-btn-circle"><i
@@ -287,7 +348,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-buildings"></i> Atlantic Trading</span>
+                            <span class="category-tag">Atlantic Trading</span>
                             <h4>Lighted Umbrellas (3x3)</h4>
                             <p>Outdoor restaurant umbrellas</p>
                             <a href="https://vt.tiktok.com/ZSx2B2XWW/" target="_blank" class="play-btn-circle"><i
@@ -301,7 +362,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-buildings"></i> Atlantic Trading</span>
+                            <span class="category-tag">Atlantic Trading</span>
                             <h4>4 set chair with one table</h4>
                             <p>Outdoor restaurant umbrella</p>
                             <a href="https://vt.tiktok.com/ZSxWE7E5y/" target="_blank" class="play-btn-circle"><i
@@ -315,7 +376,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-plant"></i> Yidenkachew Gardening</span>
+                            <span class="category-tag">Yidenkachew Gardening</span>
                             <h4>Friendship Park Project</h4>
                             <p>Green area landscaping project</p>
                             <a href="https://vt.tiktok.com/ZSHKjD3KA/" target="_blank" class="play-btn-circle"><i
@@ -329,7 +390,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-plug"></i> Perfect Electronics</span>
+                            <span class="category-tag">Perfect Electronics</span>
                             <h4>Washing Machine</h4>
                             <p>Business promotion</p>
                             <a href="https://vt.tiktok.com/ZSQmko8rN/" target="_blank" class="play-btn-circle"><i
@@ -343,7 +404,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-plant"></i> Yidenkachew Gardening</span>
+                            <span class="category-tag">Yidenkachew Gardening</span>
                             <h4>Gardening Services</h4>
                             <p>Professional gardening & landscaping</p>
                             <a href="https://vt.tiktok.com/ZSHKj6q91/" target="_blank" class="play-btn-circle"><i
@@ -357,7 +418,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-soccer-ball"></i> Football</span>
+                            <span class="category-tag">Football</span>
                             <h4>Highlight Reel 1</h4>
                             <p>Dynamic short-form highlight edit</p>
                             <a href="https://vt.tiktok.com/ZSmYVKx3j/" target="_blank" class="play-btn-circle"><i
@@ -371,7 +432,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-soccer-ball"></i> Football</span>
+                            <span class="category-tag">Football</span>
                             <h4>Match Summary</h4>
                             <p>Engaging football summary video</p>
                             <a href="https://vt.tiktok.com/ZSmYqJ3sB/" target="_blank" class="play-btn-circle"><i
@@ -385,7 +446,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-t-shirt"></i> Fashion</span>
+                            <span class="category-tag">Fashion</span>
                             <h4>Brand Showcase</h4>
                             <p>Apparel visual promo</p>
                             <a href="https://vt.tiktok.com/ZSmYVP952/" target="_blank" class="play-btn-circle"><i
@@ -399,7 +460,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-t-shirt"></i> Fashion</span>
+                            <span class="category-tag">Fashion</span>
                             <h4>Highlight Reel</h4>
                             <p>Product features</p>
                             <a href="https://vt.tiktok.com/ZSmYVG9yv/" target="_blank" class="play-btn-circle"><i
@@ -413,7 +474,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-t-shirt"></i> Fashion</span>
+                            <span class="category-tag">Fashion</span>
                             <h4>Styling BTS</h4>
                             <p>Behind the scenes production</p>
                             <a href="https://vt.tiktok.com/ZSmYVbfnR/" target="_blank" class="play-btn-circle"><i
@@ -427,7 +488,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-t-shirt"></i> Fashion</span>
+                            <span class="category-tag">Fashion</span>
                             <h4>Creative Transition</h4>
                             <p>Trendy outfit changes</p>
                             <a href="https://vt.tiktok.com/ZSmYV9oPs/" target="_blank" class="play-btn-circle"><i
@@ -441,7 +502,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-coffee"></i> Cafe</span>
+                            <span class="category-tag">Cafe</span>
                             <h4>Cafe Vibe Reel</h4>
                             <p>Aesthetic promotional video</p>
                             <a href="https://vt.tiktok.com/ZSmYqyRFw/" target="_blank" class="play-btn-circle"><i
@@ -455,7 +516,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-star"></i> Promo</span>
+                            <span class="category-tag">Promo</span>
                             <h4>Religious Institution</h4>
                             <p>Community coverage</p>
                             <a href="https://vt.tiktok.com/ZSmYqBkUd/" target="_blank" class="play-btn-circle"><i
@@ -469,7 +530,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-star"></i> Promo</span>
+                            <span class="category-tag">Promo</span>
                             <h4>Wabi Tutors</h4>
                             <p>Education promotion</p>
                             <a href="https://vt.tiktok.com/ZSmYq8Fhv/" target="_blank" class="play-btn-circle"><i
@@ -483,7 +544,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-star"></i> Promo</span>
+                            <span class="category-tag">Promo</span>
                             <h4>Embroidery Trading</h4>
                             <p>Business promotion</p>
                             <a href="https://vt.tiktok.com/ZSmYqBh9S/" target="_blank" class="play-btn-circle"><i
@@ -497,7 +558,7 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-gift"></i> Sheva Toys</span>
+                            <span class="category-tag">Sheva Toys</span>
                             <h4>Toys Showcase</h4>
                             <p>Product promotion reel</p>
                             <a href="https://vt.tiktok.com/ZSCks3jRY/" target="_blank" class="play-btn-circle"><i
@@ -511,15 +572,13 @@
                             <i class="ph-duotone ph-play-circle huge-icon"></i>
                         </div>
                         <div class="card-content">
-                            <span class="category-tag"><i class="ph-fill ph-storefront"></i> Nesbir Trading</span>
+                            <span class="category-tag">Nesbir Trading</span>
                             <h4>Nesbir Trading PLC</h4>
                             <p>Business promotion</p>
                             <a href="https://vt.tiktok.com/ZSCkGrwpT/" target="_blank" class="play-btn-circle"><i
                                     class="ph-fill ph-play"></i></a>
                         </div>
                     </div>
-
-
 
                 </div>
             </div>
@@ -529,15 +588,12 @@
         <section class="vault-section" id="private-videos">
             <div class="container">
                 <div class="section-header fade-up center">
-                    <h2 class="category-title text-accent"><i class="ph-fill ph-lock-key"></i> The Vault</h2>
+                    <h2>Private Work</h2>
                     <div class="header-line mx-auto"></div>
-                    <p class="section-subtitle">Confidential reels & unreleased projects. Restricted access viewing
-                        only.</p>
                 </div>
                 <div class="vault-grid fade-up mt-5">
                     <!-- vault card 1 -->
                     <div class="vault-card">
-                        <div class="vault-badge"><i class="ph-bold ph-warning-circle"></i> CONFIDENTIAL</div>
                         <div class="vault-video-wrapper">
                             <video class="main-video" controls preload="none" playsinline controlsList="nodownload"
                                 title="Civil Field Work">
@@ -547,12 +603,11 @@
                         </div>
                         <div class="vault-content">
                             <h4>Civil Field Work</h4>
-                            <p>Confidential brand showcase.</p>
+                            <p>Brand showcase.</p>
                         </div>
                     </div>
                     <!-- vault card 2 -->
                     <div class="vault-card">
-                        <div class="vault-badge"><i class="ph-bold ph-warning-circle"></i> CONFIDENTIAL</div>
                         <div class="vault-video-wrapper">
                             <video class="main-video" controls preload="none" playsinline controlsList="nodownload"
                                 title="Random Day Vlog">
@@ -562,185 +617,177 @@
                         </div>
                         <div class="vault-content">
                             <h4>Random Day Vlog</h4>
-                            <p>Private behind-the-scenes.</p>
+                            <p>Behind-the-scenes.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- brands & tools Wrapper -->
-        <div class="brands-tools-wrapper">
-            <!-- clients Section -->
-            <section class="clients-grid" id="clients">
-                <a href="https://www.tiktok.com/@atlantic.trading" target="_blank" class="client-card fade-up delay-1">
-                    <div class="client-school">
-                        <i class="ph ph-buildings"></i>
-                    </div>
-                    <div class="client-info">
-                        <h4>Atlantic Trading</h4>
-                        <p class="client-handle">@atlantic.trading</p>
-                    </div>
-                    <i class="ph-bold ph-arrow-up-right link-icon"></i>
-                </a>
-
-                <a href="https://www.tiktok.com/@yidenkachew.gardening" target="_blank"
-                    class="client-card fade-up delay-1">
-                    <div class="client-school">
-                        <i class="ph ph-leaf"></i>
-                    </div>
-                    <div class="client-info">
-                        <h4>Yidenkachew Gardening</h4>
-                        <p class="client-handle">@yidenkachew.gardening</p>
-                    </div>
-                    <i class="ph-bold ph-arrow-up-right link-icon"></i>
-                </a>
-
-                <a href="https://www.tiktok.com/@nur_mens_wear3" target="_blank" class="client-card fade-up delay-1">
-                    <div class="client-school">
-                        <i class="ph ph-t-shirt"></i>
-                    </div>
-                    <div class="client-info">
-                        <h4>NUR MEN'S WEAR</h4>
-                        <p class="client-handle">@nur_mens_wear3</p>
-                    </div>
-                    <i class="ph-bold ph-arrow-up-right link-icon"></i>
-                </a>
-
-                <a href="https://www.tiktok.com/@wabi.tutors" target="_blank" class="client-card fade-up delay-1">
-                    <div class="client-school">
-                        <i class="ph ph-book-open"></i>
-                    </div>
-                    <div class="client-info">
-                        <h4>WABI TUTORS</h4>
-                        <p class="client-handle">@wabi.tutors</p>
-                    </div>
-                    <i class="ph-bold ph-arrow-up-right link-icon"></i>
-                </a>
-
-                <a href="https://www.tiktok.com/@embroidery.trading" target="_blank"
-                    class="client-card fade-up delay-1">
-                    <div class="client-school">
-                        <i class="ph ph-needle"></i>
-                    </div>
-                    <div class="client-info">
-                        <h4>EMBROIDERY TRADING</h4>
-                        <p class="client-handle">@embroidery.trading</p>
-                    </div>
-                    <i class="ph-bold ph-arrow-up-right link-icon"></i>
-                </a>
-
-                <a href="https://www.tiktok.com/@collegeadama_academy" target="_blank"
-                    class="client-card fade-up delay-1">
-                    <div class="client-school">
-                        <i class="ph ph-soccer-ball"></i>
-                    </div>
-                    <div class="client-info">
-                        <h4>COLLEGE ADAMA ACADEMY</h4>
-                        <p class="client-handle">@collegeadama_academy</p>
-                    </div>
-                    <i class="ph-bold ph-arrow-up-right link-icon"></i>
-                </a>
-
-                <a href="https://www.tiktok.com/@sheva.toys" target="_blank" class="client-card fade-up delay-1">
-                    <div class="client-school">
-                        <i class="ph ph-gift"></i>
-                    </div>
-                    <div class="client-info">
-                        <h4>SHEVA TOYS</h4>
-                        <p class="client-handle">@sheva.toys</p>
-                    </div>
-                    <i class="ph-bold ph-arrow-up-right link-icon"></i>
-                </a>
-
-                <a href="https://www.tiktok.com/@perfectelectronicsss" target="_blank"
-                    class="client-card fade-up delay-1">
-                    <div class="client-school">
-                        <i class="ph ph-plug"></i>
-                    </div>
-                    <div class="client-info">
-                        <h4>PERFECT ELECTRONICS</h4>
-                        <p class="client-handle">@perfectelectronicsss</p>
-                    </div>
-                    <i class="ph-bold ph-arrow-up-right link-icon"></i>
-                </a>
-
-                <a href="https://vt.tiktok.com/ZSCkGrwpT/" target="_blank" class="client-card fade-up delay-1">
-                    <div class="client-school">
-                        <i class="ph ph-storefront"></i>
-                    </div>
-                    <div class="client-info">
-                        <h4>NESBIR TRADING PLC</h4>
-                        <p class="client-handle">@nesbir.trading.plc</p>
-                    </div>
-                    <i class="ph-bold ph-arrow-up-right link-icon"></i>
-                </a>
-            </section>
-
-            <!-- tools Section -->
-            <section class="tools" id="tools">
-                <div class="container">
-                    <div class="section-header center fade-up">
-                        <h2>My Tool Stack</h2>
-                        <div class="header-line mx-auto"></div>
-                    </div>
-                    <div class="tools-wrap fade-up dropdowns">
-                        <div class="tool-chip">
-                            <i class="ph-fill ph-scissors text-accent"></i>
-                            <span>CapCut Pro</span>
+        <!-- clients Section -->
+        <section class="clients-section" id="clients">
+            <div class="container">
+                <div class="clients-grid">
+                    <a href="https://www.tiktok.com/@atlantic.trading" target="_blank"
+                        class="client-card fade-up delay-1">
+                        <div class="client-school">
+                            <i class="ph ph-buildings"></i>
                         </div>
-                        <div class="tool-chip">
-                            <i class="ph-fill ph-paint-brush text-secondary"></i>
-                            <span>Canva</span>
+                        <div class="client-info">
+                            <h4>Atlantic Trading</h4>
+                            <p class="client-handle">@atlantic.trading</p>
                         </div>
-                        <div class="tool-chip">
-                            <i class="ph-fill ph-pen-nib text-primary"></i>
-                            <span>After Effects</span>
+                        <i class="ph-bold ph-arrow-up-right link-icon"></i>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@yidenkachew.gardening" target="_blank"
+                        class="client-card fade-up delay-1">
+                        <div class="client-school">
+                            <i class="ph ph-leaf"></i>
                         </div>
-                        <div class="tool-chip">
-                            <i class="ph-fill ph-device-mobile-camera text-light"></i>
-                            <span>Mobile Content Tools</span>
+                        <div class="client-info">
+                            <h4>Yidenkachew Gardening</h4>
+                            <p class="client-handle">@yidenkachew.gardening</p>
                         </div>
-                    </div>
+                        <i class="ph-bold ph-arrow-up-right link-icon"></i>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@nur_mens_wear3" target="_blank"
+                        class="client-card fade-up delay-1">
+                        <div class="client-school">
+                            <i class="ph ph-t-shirt"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>NUR MEN'S WEAR</h4>
+                            <p class="client-handle">@nur_mens_wear3</p>
+                        </div>
+                        <i class="ph-bold ph-arrow-up-right link-icon"></i>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@wabi.tutors" target="_blank" class="client-card fade-up delay-1">
+                        <div class="client-school">
+                            <i class="ph ph-book-open"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>WABI TUTORS</h4>
+                            <p class="client-handle">@wabi.tutors</p>
+                        </div>
+                        <i class="ph-bold ph-arrow-up-right link-icon"></i>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@embroidery.trading" target="_blank"
+                        class="client-card fade-up delay-1">
+                        <div class="client-school">
+                            <i class="ph ph-needle"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>EMBROIDERY TRADING</h4>
+                            <p class="client-handle">@embroidery.trading</p>
+                        </div>
+                        <i class="ph-bold ph-arrow-up-right link-icon"></i>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@collegeadama_academy" target="_blank"
+                        class="client-card fade-up delay-1">
+                        <div class="client-school">
+                            <i class="ph ph-soccer-ball"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>COLLEGE ADAMA ACADEMY</h4>
+                            <p class="client-handle">@collegeadama_academy</p>
+                        </div>
+                        <i class="ph-bold ph-arrow-up-right link-icon"></i>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@sheva.toys" target="_blank" class="client-card fade-up delay-1">
+                        <div class="client-school">
+                            <i class="ph ph-gift"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>SHEVA TOYS</h4>
+                            <p class="client-handle">@sheva.toys</p>
+                        </div>
+                        <i class="ph-bold ph-arrow-up-right link-icon"></i>
+                    </a>
+
+                    <a href="https://www.tiktok.com/@perfectelectronicsss" target="_blank"
+                        class="client-card fade-up delay-1">
+                        <div class="client-school">
+                            <i class="ph ph-plug"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>PERFECT ELECTRONICS</h4>
+                            <p class="client-handle">@perfectelectronicsss</p>
+                        </div>
+                        <i class="ph-bold ph-arrow-up-right link-icon"></i>
+                    </a>
+
+                    <a href="https://vt.tiktok.com/ZSCkGrwpT/" target="_blank" class="client-card fade-up delay-1">
+                        <div class="client-school">
+                            <i class="ph ph-storefront"></i>
+                        </div>
+                        <div class="client-info">
+                            <h4>NESBIR TRADING PLC</h4>
+                            <p class="client-handle">@nesbir.trading.plc</p>
+                        </div>
+                        <i class="ph-bold ph-arrow-up-right link-icon"></i>
+                    </a>
                 </div>
-            </section>
-        </div>
+            </div>
+        </section>
 
         <!-- contact Section -->
         <section class="contact" id="contact">
             <div class="container">
                 <div class="contact-wrap">
-                    <div class="contact-info fade-up">
-                        <h2>Let's create something <span class="gradient-text">amazing</span> together.</h2>
-                        <p class="contact-lead">Ready to elevate your digital presence? Get in touch and let's discuss
-                            how we can help your brand grow.</p>
+                    <div class="contact-grid">
+                        <div class="contact-info fade-up">
+                            <h2>Let's work together.</h2>
+                            <p class="contact-lead">Have a project in mind? Fill out the form or reach out directly.</p>
 
-                        <div class="contact-details">
-                            <a href="tel:0942194985" class="contact-item">
-                                <div class="icon-box"><i class="ph-fill ph-phone-call"></i></div>
-                                <div>
-                                    <h5>Call Me</h5>
-                                    <p>0942194985</p>
-                                </div>
-                            </a>
-                            <a href="mailto:Mohammedalewi7@gmail.com?subject=Project%20Inquiry&body=Hi%20Mohammed%2C%0A%0AI%20would%20like%20to%20work%20with%20you%20on%20..."
-                                class="contact-item" id="email-contact-link">
-                                <div class="icon-box"><i class="ph-fill ph-envelope-simple"></i></div>
-                                <div>
-                                    <h5>Email Me</h5>
-                                    <p>Mohammedalewi7@gmail.com</p>
-                                </div>
-                            </a>
+                            <div class="contact-details">
+                                <a href="tel:0942194985" class="contact-item">
+                                    <div class="icon-box"><i class="ph-fill ph-phone-call"></i></div>
+                                    <div>
+                                        <h5>Call Me</h5>
+                                        <p>0942194985</p>
+                                    </div>
+                                </a>
+                                <a href="mailto:Mohammedalewi7@gmail.com?subject=Project%20Inquiry&body=Hi%20Mohammed%2C%0A%0AI%20would%20like%20to%20work%20with%20you%20on%20..."
+                                    class="contact-item" id="email-contact-link">
+                                    <div class="icon-box"><i class="ph-fill ph-envelope-simple"></i></div>
+                                    <div>
+                                        <h5>Email Me</h5>
+                                        <p>Mohammedalewi7@gmail.com</p>
+                                    </div>
+                                </a>
+                            </div>
+
+                            <div class="social-links mt-4">
+                                <a href="https://www.tiktok.com/@mame._a?_r=1&_t=ZS-95MhAQ0wxoT" class="social-icon"
+                                    aria-label="TikTok"><i class="ph-fill ph-tiktok-logo"></i></a>
+                                <a href="https://t.me/Mo_square" class="social-icon" aria-label="Telegram"><i
+                                        class="ph-fill ph-telegram-logo"></i></a>
+                                <a href="#" class="social-icon" aria-label="LinkedIn"><i
+                                        class="ph-fill ph-linkedin-logo"></i></a>
+                            </div>
                         </div>
 
-                        <div class="social-links mt-4">
-                            <a href="https://www.tiktok.com/@mame._a?_r=1&_t=ZS-95MhAQ0wxoT" class="social-icon"
-                                aria-label="TikTok"><i class="ph-fill ph-tiktok-logo"></i></a>
-                            <a href="https://t.me/Mo_square" class="social-icon" aria-label="Telegram"><i
-                                    class="ph-fill ph-telegram-logo"></i></a>
-                            <a href="#" class="social-icon" aria-label="LinkedIn"><i
-                                    class="ph-fill ph-linkedin-logo"></i></a>
-                        </div>
+                        <form class="contact-form fade-up delay-1" id="contact-form">
+                            <div class="form-group">
+                                <label for="contact-name">Name</label>
+                                <input type="text" id="contact-name" name="name" required placeholder="Your Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-email">Email</label>
+                                <input type="email" id="contact-email" name="email" required placeholder="your.email@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="contact-message">Message</label>
+                                <textarea id="contact-message" name="message" rows="4" required placeholder="Tell me about your project..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-large w-100">Send Message <i class="ph-bold ph-paper-plane-right"></i></button>
+                        </form>
                     </div>
 
                 </div>
@@ -826,8 +873,20 @@
         </div>
     </div>
 
+    <div class="cursor-glow" aria-hidden="true"></div>
     <script src="thumbnailsData.js"></script>
     <script src="script.js"></script>
+    <!-- Inject "View Project →" spans into every portfolio card -->
+    <script>
+        document.querySelectorAll('.portfolio-card .card-content').forEach(function(content) {
+            if (!content.querySelector('.view-project-text')) {
+                var span = document.createElement('span');
+                span.className = 'view-project-text';
+                span.textContent = 'View Project →';
+                content.appendChild(span);
+            }
+        });
+    </script>
 </body>
 
 </html>

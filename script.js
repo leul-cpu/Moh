@@ -103,6 +103,52 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Contact Form Handler: generate mailto link with form values
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            // Part 6: Loading state
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Sending...';
+
+            const name = document.getElementById('contact-name').value;
+            const email = document.getElementById('contact-email').value;
+            const message = document.getElementById('contact-message').value;
+
+            const subject = encodeURIComponent(`Project Inquiry from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+
+            const mailtoUrl = `mailto:Mohammedalewi7@gmail.com?subject=${subject}&body=${body}`;
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=Mohammedalewi7@gmail.com&su=${subject}&body=${body}`;
+
+            let pageHidden = false;
+            const onVisibilityChange = () => {
+                if (document.hidden) pageHidden = true;
+            };
+            document.addEventListener('visibilitychange', onVisibilityChange);
+
+            window.location.href = mailtoUrl;
+
+            setTimeout(() => {
+                document.removeEventListener('visibilitychange', onVisibilityChange);
+                if (!pageHidden) {
+                    window.open(gmailUrl, '_blank', 'noopener,noreferrer');
+                }
+            }, 900);
+
+            // Part 6: Reset button after send
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                contactForm.reset();
+            }, 1200);
+        });
+    }
+
     const animatedElements = document.querySelectorAll('.fade-up, .fade-in');
 
     const observerOptions = {
@@ -290,9 +336,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         const thumbUrl = (data && typeof data === 'object') ? data.thumbnail : data;
 
                         if (thumbUrl) {
-                            bg.style.backgroundImage = `linear-gradient(to top, rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.15)), url('${thumbUrl}')`;
-                            bg.style.backgroundSize = 'cover';
-                            bg.style.backgroundPosition = card.dataset.thumbPosition || 'center';
+                            const img = new Image();
+                            img.src = thumbUrl;
+                            img.onload = () => {
+                                bg.style.backgroundImage = `linear-gradient(to top, rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.2)), url('${thumbUrl}')`;
+                                bg.style.backgroundSize = 'cover';
+                                bg.style.backgroundPosition = card.dataset.thumbPosition || 'center';
+                                bg.classList.add('loaded');
+                            };
                         }
                     }
                     observer.unobserve(card);
@@ -415,6 +466,8 @@ document.addEventListener('DOMContentLoaded', () => {
     lightboxPrev.addEventListener('click', () => navigateLightbox('prev'));
     lightboxNext.addEventListener('click', () => navigateLightbox('next'));
 
+
+
     // Keyboard controls (Esc, Tab, Left/Right arrow keys)
     document.addEventListener('keydown', (e) => {
         if (!lightbox.classList.contains('active')) return;
@@ -431,14 +484,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const firstElement = focusableElements[0];
             const lastElement = focusableElements[focusableElements.length - 1];
 
-            if (e.shiftKey) { // if shift key pressed for shift + tab combination
+            if (e.shiftKey) {
                 if (document.activeElement === firstElement) {
-                    lastElement.focus(); // add focus for the last focusable element
+                    lastElement.focus();
                     e.preventDefault();
                 }
-            } else { // if tab key is pressed
+            } else {
                 if (document.activeElement === lastElement) {
-                    firstElement.focus(); // add focus for the first focusable element
+                    firstElement.focus();
                     e.preventDefault();
                 }
             }
@@ -457,17 +510,143 @@ document.addEventListener('DOMContentLoaded', () => {
     if (allWorksBtn) {
         allWorksBtn.click();
     }
-});
 
-// Scroll Progress Indicator Logic
-const updateScrollProgress = () => {
-    const scrollProgress = document.getElementById('scroll-progress');
-    if (scrollProgress) {
-        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = (window.scrollY / totalHeight) * 100;
-        scrollProgress.style.width = `${progress}%`;
+    // Scroll indicator opacity fade
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+        window.addEventListener('scroll', () => {
+            scrollIndicator.style.opacity = Math.max(0, 1 - window.scrollY / 300);
+        }, { passive: true });
     }
+// --- Part 2.1: Magnetic buttons (desktop only) ---
+const magneticBtns = document.querySelectorAll('.btn-primary, .btn-outline, .filter-btn');
+
+if (!window.matchMedia('(pointer: coarse)').matches) {
+    magneticBtns.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width  / 2;
+            const y = e.clientY - rect.top  - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = '';
+        });
+    });
+}
+
+// --- Part 2.2: Custom cursor glow (desktop only) ---
+const cursorGlow = document.querySelector('.cursor-glow');
+if (cursorGlow && !window.matchMedia('(pointer: coarse)').matches) {
+    let cx = 0, cy = 0, tx = 0, ty = 0;
+    document.addEventListener('mousemove', (e) => {
+        tx = e.clientX;
+        ty = e.clientY;
+    });
+    const animateCursor = () => {
+        cx += (tx - cx) * 0.12;
+        cy += (ty - cy) * 0.12;
+        cursorGlow.style.left = cx + 'px';
+        cursorGlow.style.top  = cy + 'px';
+        requestAnimationFrame(animateCursor);
+    };
+    animateCursor();
+}
+
+// --- Part 3.2: Skill bars animate width on scroll ---
+const skillBars = document.querySelectorAll('.skill-progress');
+if (skillBars.length) {
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const bar = entry.target;
+                const targetWidth = bar.style.width;
+                bar.style.width = '0%';
+                void bar.offsetWidth; // force reflow
+                bar.style.width = targetWidth;
+                skillObserver.unobserve(bar);
+            }
+        });
+    }, { threshold: 0.3 });
+    skillBars.forEach(bar => skillObserver.observe(bar));
+}
+
+// --- Part 4.1: 3D tilt on portfolio cards (desktop only) ---
+const tiltCards = document.querySelectorAll('.portfolio-card');
+
+if (!window.matchMedia('(pointer: coarse)').matches) {
+    tiltCards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width;
+            const y = (e.clientY - rect.top)  / rect.height;
+            const rotateX = (y - 0.5) * -8;
+            const rotateY = (x - 0.5) *  8;
+            card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = '';
+        });
+    });
+}
+
+// --- Part 5: Stat number counter animation ---
+const statNumbers = document.querySelectorAll('.stat-number');
+
+const animateCounter = (el) => {
+    const text = el.textContent.trim();
+    const hasPlus = text.includes('+');
+    const hasM    = text.includes('M');
+    const numericPart = parseInt(text.replace(/\D/g, ''), 10);
+    if (isNaN(numericPart)) return;
+
+    let current = 0;
+    const duration  = 1500;
+    const startTime = performance.now();
+
+    const step = (now) => {
+        const elapsed  = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased    = 1 - Math.pow(1 - progress, 4);
+        current = Math.floor(eased * numericPart);
+
+        let suffix = '';
+        if (hasM)         suffix = 'M+';
+        else if (hasPlus) suffix = '+';
+
+        el.textContent = current + suffix;
+        if (progress < 1) {
+            requestAnimationFrame(step);
+        } else {
+            el.textContent = numericPart + suffix;
+        }
+    };
+    requestAnimationFrame(step);
 };
 
-window.addEventListener('scroll', updateScrollProgress);
-updateScrollProgress(); // Initial call to set progress on page load
+if (statNumbers.length) {
+    const statObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                statObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    statNumbers.forEach(num => statObserver.observe(num));
+}
+
+// --- Part 8: Footer entrance ---
+const footer = document.querySelector('footer');
+if (footer) {
+    const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                footer.classList.add('visible');
+                footerObserver.unobserve(footer);
+            }
+        });
+    }, { threshold: 0.2 });
+    footerObserver.observe(footer);
+}
+});

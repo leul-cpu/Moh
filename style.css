@@ -501,8 +501,12 @@ section {
     text-transform: uppercase;
 }
 
-.logo-dot {
+.logo-exponent {
     color: var(--color-kimi-blue);
+    font-size: 9px;
+    vertical-align: super;
+    line-height: 0;
+    margin-left: 1px;
 }
 
 /* Divider between logo and links */

@@ -62,6 +62,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Scroll Progress Indicator
+    const scrollProgress = document.getElementById('scroll-progress');
+    const updateScrollProgress = () => {
+        if (!scrollProgress) return;
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+
+        // Force 100% when extremely close to the bottom to account for dynamic layout/subpixel rendering
+        const isNearBottom = scrollTop + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 10;
+        const finalPercent = isNearBottom ? 100 : Math.min(100, Math.max(0, scrollPercent));
+
+        scrollProgress.style.width = `${finalPercent}%`;
+    };
+
     // Sticky Navbar
     const navbar = document.getElementById('navbar');
     
@@ -71,12 +86,14 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             navbar.classList.remove('scrolled');
         }
+        updateScrollProgress();
     });
 
     // Initial check in case of refresh
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     }
+    updateScrollProgress();
 
     // Email link: try device mail app first, then fallback to Gmail compose.
     const emailContactLink = document.getElementById('email-contact-link');

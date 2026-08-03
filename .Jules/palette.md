@@ -29,3 +29,7 @@
 ## 2026-08-02 - [Interactive Focus-Visible Syncing for Secondary Elements]
 **Learning:** Adding hover animations and scale/translation transforms to interactive elements (like social icons, mobile menu buttons, and lightbox controls) makes a page feel extremely polished. However, if `:focus-visible` styles are not also updated to synchronize with these hover effects (or are missing entirely), keyboard users are deprived of that visual delight and can struggle to track focus during single-page navigation.
 **Action:** Always pair visual hover transforms and gradients with equivalent `:focus-visible` styles and smooth transitions to ensure mouse and keyboard users enjoy a consistent, accessible, and delightful interactive experience.
+
+## 2026-08-03 - [Implementation of fixed scroll progress indicator]
+**Learning:** Adding a scroll progress indicator offers immediate visual feedback and wayfinding on content-rich, scroll-heavy single page websites. Implementing this using a semantic, visually hidden or hidden-by-aria (`aria-hidden="true"`) element avoids cluttering assistive technologies while providing a delightful micro-interaction that updates smoothly on scroll.
+**Action:** Always implement scroll progress elements with `aria-hidden="true"`, fixed positioning with high z-index (e.g. 2000), and dynamic script updates on both scroll events and page initialization to handle persisted scroll positions upon page refreshes.

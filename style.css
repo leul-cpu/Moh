@@ -243,6 +243,17 @@ video {
     outline-offset: 2px;
 }
 
+#scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background-color: var(--color-kimi-blue);
+    z-index: 2000;
+    transition: width 0.1s ease-out;
+}
+
 :focus-visible {
     outline: 2px solid var(--color-kimi-blue);
     outline-offset: 2px;

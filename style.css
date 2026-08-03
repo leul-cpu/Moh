@@ -626,6 +626,29 @@ section {
     color: var(--color-labels-primary);
     font-size: 20px;
     cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    align-items: center;
+    justify-content: center;
+    transition:
+        background-color var(--duration-fast) var(--ease-standard),
+        border-color var(--duration-fast) var(--ease-standard),
+        transform var(--duration-fast) var(--ease-standard);
+}
+
+.mobile-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.mobile-menu-btn:focus-visible {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+    outline: 2px solid var(--color-kimi-blue);
+    outline-offset: 3px;
 }
 
 .mobile-menu {
@@ -1953,12 +1976,22 @@ video:-webkit-full-screen {
     transition:
         background-color var(--duration-fast) var(--ease-standard),
         color var(--duration-fast) var(--ease-standard),
-        border-color var(--duration-fast) var(--ease-standard);
+        border-color var(--duration-fast) var(--ease-standard),
+        transform var(--duration-fast) var(--ease-standard);
 }
 
 .social-icon:hover {
     background: var(--primary);
+    color: white;
     transform: translateY(-3px);
+}
+
+.social-icon:focus-visible {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+    outline: 2px solid var(--color-kimi-blue);
+    outline-offset: 3px;
 }
 
 /* Contact Form (Item 6 Upgrade) */
@@ -2292,7 +2325,9 @@ footer {
     transition:
         background-color var(--duration-fast) var(--ease-standard),
         color var(--duration-fast) var(--ease-standard),
-        border-color var(--duration-fast) var(--ease-standard);
+        border-color var(--duration-fast) var(--ease-standard),
+        transform var(--duration-fast) var(--ease-standard),
+        box-shadow var(--duration-fast) var(--ease-standard);
 }
 
 .lightbox-nav:hover {
@@ -2301,6 +2336,16 @@ footer {
     border-color: transparent;
     box-shadow: 0 5px 15px var(--glow-primary);
     transform: scale(1.08);
+}
+
+.lightbox-nav:focus-visible {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 5px 15px var(--glow-primary);
+    transform: scale(1.08);
+    outline: 2px solid var(--color-kimi-blue);
+    outline-offset: 3px;
 }
 
 .lightbox-nav:active {

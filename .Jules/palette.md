@@ -25,3 +25,7 @@
 ## 2026-07-29 - [Focus Restorations in Modals with Internal Navigation]
 **Learning:** In modals with internal navigation (e.g., Lightboxes with Next/Prev buttons), simply tracking the `document.activeElement` when the modal opens is insufficient. Navigating inside the modal must preserve the original trigger outside the modal as the restoration point, rather than accidentally overwriting it with modal navigation buttons. If overwritten, closing the modal results in focus loss to the body.
 **Action:** Explicitly track the restoration element and protect it from being overwritten during intra-modal navigation. Ensure any "next/prev" actions dynamically trace back to the corresponding trigger element on the parent page.
+
+## 2026-08-02 - [Interactive Focus-Visible Syncing for Secondary Elements]
+**Learning:** Adding hover animations and scale/translation transforms to interactive elements (like social icons, mobile menu buttons, and lightbox controls) makes a page feel extremely polished. However, if `:focus-visible` styles are not also updated to synchronize with these hover effects (or are missing entirely), keyboard users are deprived of that visual delight and can struggle to track focus during single-page navigation.
+**Action:** Always pair visual hover transforms and gradients with equivalent `:focus-visible` styles and smooth transitions to ensure mouse and keyboard users enjoy a consistent, accessible, and delightful interactive experience.

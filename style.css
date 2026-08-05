@@ -2042,8 +2042,18 @@ video:-webkit-full-screen {
 .form-group input:focus,
 .form-group textarea:focus {
     border-color: var(--color-kimi-blue);
-    outline: none;
     background: var(--color-bg-tertiary);
+}
+
+.form-group input:focus-visible,
+.form-group textarea:focus-visible {
+    outline: 2px solid var(--color-kimi-blue);
+    outline-offset: 2px;
+}
+
+.form-group input:focus:not(:focus-visible),
+.form-group textarea:focus:not(:focus-visible) {
+    outline: none;
 }
 
 .btn-large {

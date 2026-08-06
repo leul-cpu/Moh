@@ -23,7 +23,7 @@
 **Action:** Always format modified code segments manually or locally instead of running global full-file formatting, ensuring the final patch remains concise and easy to review.
 
 ## 2026-07-29 - [Focus Restorations in Modals with Internal Navigation]
-**Learning:** In modals with internal navigation (e.g., Lightboxes with Next/Prev buttons), simply tracking the `document.activeElement` when the modal opens is insufficient. Navigating inside the modal must preserve the original trigger outside the modal as the restoration point, rather than accidentally overwriting it with modal navigation buttons. If overwritten, closing the modal results in focus loss to the body.
+**Learning:** In modals with internal navigation (e.g., Lightboxes with Next/Prev videos), simply tracking the `document.activeElement` when the modal opens is insufficient. Navigating inside the modal must preserve the original trigger outside the modal as the restoration point, rather than accidentally overwriting it with modal navigation buttons. If overwritten, closing the modal results in focus loss to the body.
 **Action:** Explicitly track the restoration element and protect it from being overwritten during intra-modal navigation. Ensure any "next/prev" actions dynamically trace back to the corresponding trigger element on the parent page.
 
 ## 2026-08-02 - [Interactive Focus-Visible Syncing for Secondary Elements]
@@ -33,3 +33,7 @@
 ## 2026-08-03 - [Implementation of fixed scroll progress indicator]
 **Learning:** Adding a scroll progress indicator offers immediate visual feedback and wayfinding on content-rich, scroll-heavy single page websites. Implementing this using a semantic, visually hidden or hidden-by-aria (`aria-hidden="true"`) element avoids cluttering assistive technologies while providing a delightful micro-interaction that updates smoothly on scroll.
 **Action:** Always implement scroll progress elements with `aria-hidden="true"`, fixed positioning with high z-index (e.g. 2000), and dynamic script updates on both scroll events and page initialization to handle persisted scroll positions upon page refreshes.
+
+## 2026-08-05 - [Focus Accessibility on Contact Form Inputs]
+**Learning:** Standard form designs often disable default outline styles on input fields with `outline: none` on focus, creating significant barriers for keyboard-only users who can no longer track focus visually. Utilizing modern CSS selectors like `:focus-visible` lets developers show high-contrast focus rings solely to keyboard navigation users without affecting the clean visual flow of pointer interactions.
+**Action:** Avoid raw `outline: none` on inputs or textareas without setting custom, high-contrast, brand-aligned outlines with `:focus-visible` to satisfy both visual design and keyboard accessibility (WCAG 2.1).

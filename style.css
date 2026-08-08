@@ -2061,6 +2061,42 @@ video:-webkit-full-screen {
     font-size: var(--text-b1-emph-size);
 }
 
+.form-status {
+    margin-top: var(--space-12);
+    font-size: var(--text-b2-regular-size);
+    text-align: center;
+    border-radius: var(--radius-md);
+    transition: all var(--duration-normal) var(--ease-standard);
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    max-height: 0;
+    overflow: hidden;
+}
+
+.form-status.success {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    max-height: 150px;
+    padding: var(--space-12) var(--space-16);
+    border: 1px solid var(--color-success);
+    color: var(--color-success);
+    background: rgba(22, 196, 86, 0.1);
+}
+
+.status-link {
+    color: var(--color-success);
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.status-link:hover,
+.status-link:focus-visible {
+    color: var(--color-kimi-blue-hover);
+    outline: none;
+}
+
 
 /* --------------------------------------------------------------------------
    16. FOOTER

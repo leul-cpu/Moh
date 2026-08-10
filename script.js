@@ -132,6 +132,12 @@ document.addEventListener('DOMContentLoaded', () => {
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="ph ph-spinner animate-spin"></i> Sending...';
 
+            const formStatus = document.getElementById('form-status');
+            if (formStatus) {
+                formStatus.className = 'form-status';
+                formStatus.innerHTML = '';
+            }
+
             const name = document.getElementById('contact-name').value;
             const email = document.getElementById('contact-email').value;
             const message = document.getElementById('contact-message').value;
@@ -162,6 +168,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
                 contactForm.reset();
+                if (formStatus) {
+                    formStatus.className = 'form-status success';
+                    formStatus.innerHTML = `<strong>Inquiry initiated!</strong> Your email client should open shortly. If not, click to send via <a href="${mailtoUrl}" class="status-link">Default Mail</a> or <a href="${gmailUrl}" target="_blank" rel="noopener noreferrer" class="status-link">Gmail</a>.`;
+                }
             }, 1200);
         });
     }

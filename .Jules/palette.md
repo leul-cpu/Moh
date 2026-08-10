@@ -38,6 +38,6 @@
 **Learning:** Standard form designs often disable default outline styles on input fields with `outline: none` on focus, creating significant barriers for keyboard-only users who can no longer track focus visually. Utilizing modern CSS selectors like `:focus-visible` lets developers show high-contrast focus rings solely to keyboard navigation users without affecting the clean visual flow of pointer interactions.
 **Action:** Avoid raw `outline: none` on inputs or textareas without setting custom, high-contrast, brand-aligned outlines with `:focus-visible` to satisfy both visual design and keyboard accessibility (WCAG 2.1).
 
-## 2026-08-06 - [Resolving Undefined Theme Variable References]
-**Learning:** References to undefined CSS custom variables (e.g., `var(--primary)`) fail silently in browsers, rendering key keyboard accessibility focus rings, filter button highlights, and interactive control hover effects invisible. Mapping these to existing design system tokens restores critical interactive visual feedback without changing layout structures.
-**Action:** Always verify custom variables are fully declared in `:root` and map them consistently to existing vetted theme tokens to avoid silent UI and accessibility failures.
+## 2026-08-08 - [Static Form Submission On-Page Feedback and Fallbacks]
+**Learning:** Forms on static websites often initiate client-side mailto links or redirect to webmail without displaying any on-page success confirmation. This leaves users, especially those using screen readers or assistive technologies, confused as the page does not acknowledge submission. Moreover, mailto links often fail on platforms without a default mail client.
+**Action:** Provide immediate, accessible status feedback in a container with `aria-live="polite"`, and include explicit manual fallback links (e.g. for default mail client and webmail) to allow users to recover if the automated client action fails.

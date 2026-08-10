@@ -29,6 +29,12 @@
     --color-orange: #ff9f0a;
     --color-purple: #a16bff;
 
+    /* Core brand theme mappings (resolving missing variables) */
+    --primary: var(--color-kimi-blue);
+    --secondary: var(--color-purple);
+    --glow-primary: rgba(26, 136, 255, 0.35);
+    --text-main: #ffffff;
+
     /* Service card top border accents */
     --service-accent-social: #1a88ff;
     --service-accent-video: #ff4756;

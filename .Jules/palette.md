@@ -41,3 +41,7 @@
 ## 2026-08-08 - [Static Form Submission On-Page Feedback and Fallbacks]
 **Learning:** Forms on static websites often initiate client-side mailto links or redirect to webmail without displaying any on-page success confirmation. This leaves users, especially those using screen readers or assistive technologies, confused as the page does not acknowledge submission. Moreover, mailto links often fail on platforms without a default mail client.
 **Action:** Provide immediate, accessible status feedback in a container with `aria-live="polite"`, and include explicit manual fallback links (e.g. for default mail client and webmail) to allow users to recover if the automated client action fails.
+
+## 2026-08-11 - [Focus Outline Conforming and Border-Radius Overrides]
+**Learning:** Hardcoding a generic `border-radius` (such as `border-radius: var(--radius-xxs)`) inside a global `:focus-visible` or `:focus` block is a severe accessibility and UX regression. Doing so overrides the native shapes of non-rectangular interactive elements (like pill-shaped buttons, circular icons, or rounded badges), causing them to morph into sharp rounded rectangles when focused via keyboard. Modern browsers conform the outline to the element's existing boundary perfectly if we omit focus-specific border-radius resets.
+**Action:** Always omit hardcoded `border-radius` styles inside global focus indicators, letting modern browser engines automatically align the focus outline to the element's native layout boundary.

@@ -41,3 +41,7 @@
 ## 2026-08-08 - [Static Form Submission On-Page Feedback and Fallbacks]
 **Learning:** Forms on static websites often initiate client-side mailto links or redirect to webmail without displaying any on-page success confirmation. This leaves users, especially those using screen readers or assistive technologies, confused as the page does not acknowledge submission. Moreover, mailto links often fail on platforms without a default mail client.
 **Action:** Provide immediate, accessible status feedback in a container with `aria-live="polite"`, and include explicit manual fallback links (e.g. for default mail client and webmail) to allow users to recover if the automated client action fails.
+
+## 2026-08-09 - [Pulsing Micro-Interaction on Availability Status Badge]
+**Learning:** Static hard-blinking indicator dots can feel sudden or dated. Replacing or supplementing them with a continuous, hardware-accelerated pulsing glow using a pseudo-element (`::after`) with `transform: scale()` provides a premium, modern feel without causing any page layout shifts (CLS).
+**Action:** Apply circular shaping (`border-radius: 50%`), relative positioning, and a custom `@keyframes` scale/opacity pulse to a `::after` element inheriting from the status dot.

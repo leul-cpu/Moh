@@ -41,3 +41,7 @@
 ## 2026-08-08 - [Static Form Submission On-Page Feedback and Fallbacks]
 **Learning:** Forms on static websites often initiate client-side mailto links or redirect to webmail without displaying any on-page success confirmation. This leaves users, especially those using screen readers or assistive technologies, confused as the page does not acknowledge submission. Moreover, mailto links often fail on platforms without a default mail client.
 **Action:** Provide immediate, accessible status feedback in a container with `aria-live="polite"`, and include explicit manual fallback links (e.g. for default mail client and webmail) to allow users to recover if the automated client action fails.
+
+## 2026-08-10 - [Focus Outline Shape Mutation on Circular and Pill-Shaped Elements]
+**Learning:** Applying a global `border-radius` override under a `:focus-visible` CSS rule causes interactive elements with unique shapes (such as circular navigation buttons, social icons, and pill-shaped navigation links) to morph or mutate their shapes upon keyboard focus. Modern web browsers natively adapt outlines to respect each element's custom `border-radius`, making global focus shape overrides unnecessary and visually disruptive.
+**Action:** Avoid declaring `border-radius` globally in `:focus-visible` rules to ensure that browser focus rings perfectly match and preserve the native shape of every styled interactive component.
